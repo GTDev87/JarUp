@@ -1,6 +1,6 @@
 open BsReactNative;
 
-let image : Packager.required = Packager.require("../../../assets/icons/icon.png");
+let image : Packager.required = Packager.require("../../../assets/icons/jar.png");
 let jarIcon : Image.imageSource = Image.Required(image);
 
 let component = ReasonReact.statelessComponent("DisplayView");

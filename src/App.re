@@ -15,11 +15,9 @@ let app = () : ReasonReact.reactElement =>
       style=Style.(
         style([
           height(Pt(iosBarHeight)),
-          backgroundColor("green"),
+          backgroundColor("blue"),
         ])
     ) />
-    <NavigationView />
-    <DisplayView />
-    <ActionView />
+    <ControlView />
   </View>;
   
