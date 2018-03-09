@@ -3,6 +3,11 @@
     "sdkVersion": "24.0.0",
     "name": "JarUp",
     "description": "Uppers for your mood.",
-    "version": "0.0.1"
+    "version": "0.0.1",
+    "icon": "./assets/icons/icon.png",
+    "loading": {
+      "icon": "./assets/icons/loading.png",
+      "hideExponentText": true
+    }
   }
 }

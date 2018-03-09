@@ -19,3 +19,6 @@ yarn-error.log*
 /lib
 .bsb.lock
 .merlin
+.DS_Store
+
+yarn.lock
