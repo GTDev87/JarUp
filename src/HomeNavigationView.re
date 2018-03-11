@@ -1,17 +1,16 @@
 open BsReactNative;
 
-let component = ReasonReact.statelessComponent("NavigationView");
+let component = ReasonReact.statelessComponent("HomeNavigationView");
 
 let navigationHeight = 50.;
 
-let make = (_children) /*: ReasonReact.componentSpec(`a, `b, `c, `d, `e)*/ => {
+let make = (_children) => {
   ...component,
   render: (_self) =>
     <View
       style=Style.(
         style([
           height(Pt(navigationHeight)),
-          backgroundColor("red"),
         ])
       )
     />

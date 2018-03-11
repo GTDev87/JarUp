@@ -1,5 +1,5 @@
 {
-  "name": "jar-up",
+  "name": "illume",
   "reason": {
     "react-jsx": 2
   },
@@ -7,7 +7,8 @@
   "bs-dependencies": ["bs-react-native", "reason-react"],
   "sources": [
     {
-      "dir": "src"
+      "dir": "src",
+      "subdirs": ["types"]
     }
   ],
   "refmt": 3
