@@ -4,9 +4,9 @@
     "name": "Illume",
     "description": "Uppers for your mood.",
     "version": "0.0.1",
-    "icon": "./assets/icons/icon.png",
+    "icon": "./assets/icons/illume_b.png",
     "loading": {
-      "icon": "./assets/icons/loading.png",
+      "icon": "./assets/icons/illume_b.png",
       "hideExponentText": true
     }
   }

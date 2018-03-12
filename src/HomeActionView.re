@@ -2,15 +2,12 @@ open BsReactNative;
 
 let component = ReasonReact.statelessComponent("ActionView");
 
-let plusImage : Packager.required = Packager.require("../../../assets/icons/plus.png");
-let plusIcon : Image.imageSource = Image.Required(plusImage);
-
 let squiggleImage : Packager.required = Packager.require("../../../assets/icons/squiggle.png");
 let squiggleIcon : Image.imageSource = Image.Required(squiggleImage);
 
 let marginBottomVal = 30.;
 
-let make = (~controlAction, _children) => {
+let make = (~controlAction, ~scene, _children) => {
   ...component,
   render: (_self) =>
     <View
@@ -21,13 +18,7 @@ let make = (~controlAction, _children) => {
           justifyContent(SpaceBetween),
         ])
     )>
-      <SceneChangeButton
-        onPress=((_event) => {
-          Js.log("Add to Jar");
-          controlAction(Control.ToAdd);
-        })
-        icon=plusIcon
-      />
+      <AddModalButton scene=scene controlAction=controlAction />
       <SceneChangeButton
         onPress=((_event) => {
           Js.log("Shake");

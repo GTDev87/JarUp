@@ -1,4 +1,3 @@
-open BsReactNative;
 open Control;
 
 let navigationHeight = 50.;
@@ -20,10 +19,6 @@ let make = (_children) => {
     "the state is: " |> Js.log;
     self.state |> Js.log;
 
-    switch self.state.scene {
-    | Home => <HomeView controlAction=self.send />;
-    | Shake => <Text value="SHAKE" />
-    | Add => <Text value="ADD" />
-    }
+    <HomeView controlAction=self.send scene=self.state.scene />;
   }
 };
