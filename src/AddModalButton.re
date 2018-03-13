@@ -33,7 +33,7 @@ let make = (~controlAction, ~scene, _children) => {
               height(Pt(40.)),
               borderColor("black"),
               borderWidth(1.),
-              color("white"),
+              color("black"),
             ]))
           onSubmitEditing=((_) => controlAction(Control.ToHome))
         />
