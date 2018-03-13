@@ -17,7 +17,7 @@ let make = (~controlAction, ~scene, _children) => {
         backdropColor="white"
         backdropOpacity=0.5
         animationIn="zoomInDown"
-        animationOut="zoomOutUp"
+        animationOut="zoomOutDown"
         animationInTiming=1000.
         animationOutTiming=1000.
         backdropTransitionInTiming=1000.

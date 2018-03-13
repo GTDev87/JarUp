@@ -16,6 +16,7 @@
     "watch": "bsb -make-world -clean-world -w"
   },
   "dependencies": {
+    "bs-json": "^1.0.1",
     "bs-platform": "^2.2.2",
     "bs-react-native": "^0.5.0",
     "expo": "^24.0.0",
