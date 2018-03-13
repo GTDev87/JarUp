@@ -12,23 +12,30 @@ let make = (~controlAction, ~scene, _children) => {
   render: (_self) =>
     <View>
       <Modal2
-        /*animationType=`slide*/
-        /*transparent=false*/
-        isVisible=(scene == Control.Add)
+        isVisible=(Js.Boolean.to_js_boolean(scene == Control.Add))
         onBackdropPress={(_) => controlAction(Control.ToHome); }
-          /*
-          onRequestClose={() => {
-          alert('Modal has been closed.');
-        }}*/
+        backdropColor="white"
+        backdropOpacity=0.5
+        animationIn="zoomInDown"
+        animationOut="zoomOutUp"
+        animationInTiming=1000.
+        animationOutTiming=1000.
+        backdropTransitionInTiming=1000.
+        backdropTransitionOutTiming=1000.
       >
-        <Text value="What awesome things happend to you today?" />
+        <Text
+          style=Style.(style([color("black")]))
+          value="What awesome things happend to you today?"
+        />
         <TextInput
           style=Style.(
             style([
               height(Pt(40.)),
-              borderColor("gray"),
+              borderColor("black"),
               borderWidth(1.),
+              color("white"),
             ]))
+          onSubmitEditing=((_) => controlAction(Control.ToHome))
         />
       </Modal2>
       <SceneChangeButton
