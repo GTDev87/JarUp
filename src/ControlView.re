@@ -11,19 +11,13 @@ let colorToString(color) =
   | Control.Red => "red"
   | Control.Orange => "orange"
   | Control.Yellow => "yellow"
-  | Control.Green => "green"
-  | Control.Blue => "blue"
-  | Control.Purple => "purple"
-  };
+};
 
 let stringToColor(colorStr) =
   switch(colorStr) {
   | "red" => Control.Red
   | "orange" => Control.Orange
   | "yellow" => Control.Yellow
-  | "green" => Control.Green
-  | "blue" => Control.Blue
-  | "purple" => Control.Purple
   | _ => Control.Red
   };
 

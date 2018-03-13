@@ -1,10 +1,7 @@
 type papercolor =
   | Red
   | Orange
-  | Yellow
-  | Green
-  | Blue
-  | Purple;
+  | Yellow;
 
 type note = {
   id: int,
