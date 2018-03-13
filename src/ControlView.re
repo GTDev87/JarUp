@@ -88,16 +88,15 @@ let rehydrate = (self) => {
 
 let make = (_children) => {
   ...component,
-  initialState: () : Control.state => {scene: Control.Home, notes: []},
   didUpdate: ({newSelf}) => persist(newSelf.state),
   didMount: (self) => rehydrate(self),
+  initialState: () : Control.state => {scene: Control.Home, notes: []},
   reducer: fun (action, state: Control.state) =>
     switch action {
     | Rehydrate(s) => ReasonReact.Update(s)
     | ToHome => ReasonReact.Update {...state, scene: Control.Home}
     | ToShake => ReasonReact.Update {...state, scene: Control.Shake}
     | ToAdd => ReasonReact.Update {...state, scene: Control.Add}
-    
     },
   render: fun (self) => {
     /*let scene : Control.scene = self.state.scene;*/

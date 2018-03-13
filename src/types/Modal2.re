@@ -4,24 +4,26 @@ external modal : ReasonReact.reactClass = "default";
 let make = (
   ~isVisible,
   ~onBackdropPress,
-  ~animationOutTiming,
-  ~backdropTransitionInTiming,
-  ~backdropTransitionOutTiming,
-  ~backdropColor,
-  ~backdropOpacity,
-  ~animationOut,
+  ~animationOutTiming=?,
+  ~backdropTransitionInTiming=?,
+  ~backdropTransitionOutTiming=?,
+  ~backdropColor=?,
+  ~backdropOpacity=?,
+  ~animationIn=?,
+  ~animationOut=?,
   children) =>
   ReasonReact.wrapJsForReason(
     ~reactClass=modal,
     ~props={
       "isVisible": isVisible,
-      "backdropColor": backdropColor,
-      "backdropOpacity": backdropOpacity,
+      "backdropColor": Js.Nullable.from_opt(backdropColor),
+      "backdropOpacity": Js.Nullable.from_opt(backdropOpacity),
       "onBackdropPress": onBackdropPress,
-      "animationOut": animationOut,
-      "animationOutTiming": animationOutTiming,
-      "backdropTransitionInTiming": backdropTransitionInTiming,
-      "backdropTransitionOutTiming": backdropTransitionOutTiming,
+      "animationIn": Js.Nullable.from_opt(animationIn),
+      "animationOut": Js.Nullable.from_opt(animationOut),
+      "animationOutTiming": Js.Nullable.from_opt(animationOutTiming),
+      "backdropTransitionInTiming": Js.Nullable.from_opt(backdropTransitionInTiming),
+      "backdropTransitionOutTiming": Js.Nullable.from_opt(backdropTransitionOutTiming),
     },
     children
   );
