@@ -14,11 +14,9 @@ let make = (~controlAction, ~scene, _children) => {
       <Modal2
         isVisible=(Js.Boolean.to_js_boolean(scene == Control.Add))
         onBackdropPress={(_) => controlAction(Control.ToHome); }
-        backdropColor="white"
-        backdropOpacity=0.5
-        animationIn="zoomInDown"
+        backdropColor=Colors.yellowPrimaryString
+        backdropOpacity=0.4
         animationOut="zoomOutDown"
-        animationInTiming=1000.
         animationOutTiming=1000.
         backdropTransitionInTiming=1000.
         backdropTransitionOutTiming=1000.

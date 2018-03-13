@@ -15,7 +15,6 @@ let app = () : ReasonReact.reactElement =>
       style=Style.(
         style([
           height(Pt(iosBarHeight)),
-          backgroundColor("blue"),
         ])
     ) />
     <ControlView />

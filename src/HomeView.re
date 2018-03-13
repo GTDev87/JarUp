@@ -1,6 +1,7 @@
 open BsReactNative;
 
 let component = ReasonReact.statelessComponent("HomeView");
+let borderWidthSize = 5.;
 
 let make = (~controlAction, ~scene, _children) => {
   ...component,
@@ -9,6 +10,7 @@ let make = (~controlAction, ~scene, _children) => {
       style=Style.(
         style([
           flex(1.),
+          borderWidth(borderWidthSize),
           backgroundColor("transparent"),
         ])
       )
