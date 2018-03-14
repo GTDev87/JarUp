@@ -147,9 +147,8 @@ let make = (_children) => {
               style([
                 flex(1.),
                 position(Absolute),
-                paddingHorizontal(Pt(20.)),
-                paddingVertical(Pt(15.)),
-                fontWeight(`_500),
+                marginHorizontal(Pt(25.)),
+                marginVertical(Pt(15.)),
                 color(Colors.redPrimaryString),
                 fontSize(Float(16.)),
               ])
