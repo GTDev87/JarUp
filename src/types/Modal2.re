@@ -11,10 +11,12 @@ let make = (
   ~backdropOpacity=?,
   ~animationIn=?,
   ~animationOut=?,
+  ~style=?,
   children) =>
   ReasonReact.wrapJsForReason(
     ~reactClass=modal,
     ~props={
+      "style": Js.Nullable.from_opt(style),
       "isVisible": isVisible,
       "backdropColor": Js.Nullable.from_opt(backdropColor),
       "backdropOpacity": Js.Nullable.from_opt(backdropOpacity),
