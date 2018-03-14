@@ -1,6 +1,11 @@
 open BsReactNative;
 
-let iosBarHeight = 20.;
+let iosBarHeight =
+  (
+    Platform.os === Platform.IOS
+    ? 20.
+    : float_of_int(StatBar.constants##currentHeight)
+  );
 
 let app = () : ReasonReact.reactElement =>
   <View

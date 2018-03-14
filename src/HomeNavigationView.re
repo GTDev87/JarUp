@@ -22,7 +22,6 @@ let illumeFontHeight = 20.;
 let illumeFontWidth = 80.;
 let triangleSize = 20.;
 
-
 /* following are duplicate from HomeDisplayView */
 let distanceFromWindowEdge = 40;
 let windowWidth = Dimensions.get(`window)##width;
@@ -102,7 +101,6 @@ let illumeImageFn = (imageColor) =>
     resizeMode=`contain
     source=colorToImage(imageColor)
   />;
-
 
 let make = (_children) => {
   ...component,
