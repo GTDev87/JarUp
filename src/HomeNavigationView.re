@@ -127,7 +127,6 @@ let make = (_children) => {
           style=Style.(
             style([position(Relative),
             marginTop(Pt(navigationHeight)),
-            flex(1.),
             width(Pt(faqWidth)),
             alignSelf(Center),
           ]))
@@ -145,7 +144,6 @@ let make = (_children) => {
           <View
             style=Style.(
               style([
-                flex(1.),
                 position(Absolute),
                 marginHorizontal(Pt(25.)),
                 marginVertical(Pt(15.)),

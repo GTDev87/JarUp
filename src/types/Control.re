@@ -22,7 +22,7 @@ type action =
   | ToHome
   | ToShake
   | ToAdd
-  | Rehydrate(state);
+  | Rehydrate(notes);
 
 
 

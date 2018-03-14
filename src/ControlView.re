@@ -36,10 +36,10 @@ let decodeNote = (json) => {
   }
 };
 
-let persist = (state) => {
+let persist = (notes) => {
   /* convert state to JSON */
   let stateAsJson =
-    state.notes
+    notes
     |> Array.of_list
     |> Array.map (jsonifyNote)
     |> Js.Json.objectArray
@@ -58,6 +58,7 @@ let persist = (state) => {
   )
   |> ignore
 };
+
 let rehydrate = (self) => {
   Js.Promise.(
     /* begin call to AsyncStorage */
@@ -70,11 +71,8 @@ let rehydrate = (self) => {
              | Some(s) =>
                 /* parse JSON, decode it into a ReasonML Record, and reset the state */
                 let parsedJson = Js.Json.parseExn(s);
-                let hydratedState = {
-                  scene: Control.Home,
-                  notes: parsedJson |> Json.Decode.list(decodeNote)
-                };
-                self.ReasonReact.reduce(() => Rehydrate(hydratedState), ());
+                let hydratedNotes = parsedJson |> Json.Decode.list(decodeNote);
+                self.ReasonReact.reduce(() => Rehydrate(hydratedNotes), ());
                 ()
              }
            )
@@ -88,12 +86,12 @@ let rehydrate = (self) => {
 
 let make = (_children) => {
   ...component,
-  didUpdate: ({newSelf}) => persist(newSelf.state),
+  didUpdate: ({newSelf}) => persist(newSelf.state.notes),
   didMount: (self) => rehydrate(self),
   initialState: () : Control.state => {scene: Control.Home, notes: []},
   reducer: fun (action, state: Control.state) =>
     switch action {
-    | Rehydrate(s) => ReasonReact.Update(s)
+    | Rehydrate(notes) => ReasonReact.Update({...state, notes})
     | ToHome => ReasonReact.Update {...state, scene: Control.Home}
     | ToShake => ReasonReact.Update {...state, scene: Control.Shake}
     | ToAdd => ReasonReact.Update {...state, scene: Control.Add}
