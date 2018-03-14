@@ -49,12 +49,45 @@ type imageColor =
   | Black
   | Orange;
 
+type arrowDirection =
+  | Up
+  | Down;
+
+let modalOpenToArrowDirection = (modalOpen) => {
+  switch(modalOpen) {
+  | true => Down
+  | false => Up
+  }
+};
+
 let colorToImage = (imageColor) => {
   switch(imageColor) {
   | Black => blackIllumeIcon
   | Orange => orangeIllumeIcon
   }
 };
+
+let arrowDirectionToIcon = (imageColor) => {
+  switch(imageColor) {
+  | Up => illumeUpArrowIcon
+  | Down => illumeDownArrowIcon
+  }
+};
+
+let arrowImageFn = (arrowDirection) =>
+  <Image
+    style=Style.(
+      style([
+        flex(1.),
+        height(Pt(triangleSize)),
+        alignSelf(Center),
+        maxWidth(Pt(triangleSize)),
+        overflow(Hidden),
+        marginTop(Pt(10.)),
+      ]))
+    resizeMode=`contain
+    source=arrowDirectionToIcon(arrowDirection)
+  />;
 
 let illumeImageFn = (imageColor) =>
   <Image
@@ -79,22 +112,7 @@ let make = (_children) => {
     | Open => ReasonReact.Update({modalOpen: true})
     | Close => ReasonReact.Update({modalOpen: false})
     },
-  render: (self) => {
-    let arrow =
-      <Image
-        style=Style.(
-          style([
-            flex(1.),
-            height(Pt(triangleSize)),
-            alignSelf(Center),
-            maxWidth(Pt(triangleSize)),
-            overflow(Hidden),
-            marginTop(Pt(10.)),
-          ]))
-        resizeMode=`contain
-        source=flipIcon(self.state.modalOpen)
-      />;
-
+  render: (self) =>
     <View>
       <Modal2
         isVisible=(Js.Boolean.to_js_boolean(self.state.modalOpen))
@@ -164,9 +182,8 @@ let make = (_children) => {
           )
         >
           { illumeImageFn(Black) }
-          { arrow }
+          { self.state.modalOpen |> modalOpenToArrowDirection |> arrowImageFn }
         </View>
       </TouchableOpacity>
     </View>
-  }
-};
+  };
