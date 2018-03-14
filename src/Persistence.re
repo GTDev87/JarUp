@@ -23,13 +23,15 @@ let jsonifyNote = ({id, text, color}) =>
     ("id", id |> float_of_int |> Js.Json.number),
     ("text",  Js.Json.string(text)),
     ("color", (color |> colorToString |> Js.Json.string)),
+    ("time", id |> float_of_int |> Js.Json.number),
   ]);
 
 let decodeNote = (json) => {
   Json.Decode.{
     id: json |> field("id", int),
     text: json |> field("text", string),
-    color: json |> field("color", string) |> stringToColor
+    color: json |> field("color", string) |> stringToColor,
+    time: json |> field("time", int),
   }
 };
 

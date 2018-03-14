@@ -6,7 +6,8 @@ type papercolor =
 type note = {
   id: int,
   text: string,
-  color: papercolor
+  color: papercolor,
+  time: int,
 };
 
 type notes = list(note);
@@ -19,10 +20,9 @@ type scene =
 type state = {scene, notes};
 
 type action =
-  | ToHome
-  | ToShake
-  | ToAdd
+  | ChangeScene(scene)
   | Rehydrate(notes);
+
 
 
 

@@ -22,7 +22,7 @@ let make = (~controlAction, ~scene, _children) => {
       <SceneChangeButton
         onPress=((_event) => {
           Js.log("Shake");
-          controlAction(Control.ToShake);
+          controlAction(Control.(ChangeScene(Shake)));
         })
         icon=squiggleIcon
       />

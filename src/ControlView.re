@@ -12,16 +12,11 @@ let make = (_children) => {
   reducer: fun (action, state: Control.state) =>
     switch action {
     | Rehydrate(notes) => ReasonReact.Update({...state, notes})
-    | ToHome => ReasonReact.Update {...state, scene: Control.Home}
-    | ToShake => ReasonReact.Update {...state, scene: Control.Shake}
-    | ToAdd => ReasonReact.Update {...state, scene: Control.Add}
+    | ChangeScene(scene) => ReasonReact.Update {...state, scene}
     },
   render: fun (self) => {
-    /*let scene : Control.scene = self.state.scene;*/
-
     "the state is: " |> Js.log;
     self.state |> Js.log;
-
     <HomeView controlAction=self.send scene=self.state.scene />;
   }
 };

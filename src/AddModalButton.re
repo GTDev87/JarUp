@@ -13,7 +13,7 @@ let make = (~controlAction, ~scene, _children) => {
     <View>
       <Modal2
         isVisible=(Js.Boolean.to_js_boolean(scene == Control.Add))
-        onBackdropPress={(_) => controlAction(Control.ToHome); }
+        onBackdropPress={(_) => controlAction(Control.(ChangeScene(Home))); }
         backdropColor=Colors.yellowPrimaryString
         backdropOpacity=0.4
         animationOut="zoomOutDown"
@@ -33,12 +33,12 @@ let make = (~controlAction, ~scene, _children) => {
               borderWidth(1.),
               color("black"),
             ]))
-          onSubmitEditing=((_) => controlAction(Control.ToHome))
+          onSubmitEditing=((_) => controlAction(Control.(ChangeScene(Home))))
         />
       </Modal2>
       <SceneChangeButton
         onPress=((_event) => {
-          controlAction(Control.ToAdd);
+          controlAction(Control.(ChangeScene(Add)));
         })
         icon=plusIcon
       />
