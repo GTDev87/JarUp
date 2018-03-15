@@ -35,17 +35,17 @@ let make = (~controlAction, ~scene, ~notes, _children) => {
       <Modal2
         isVisible=(Js.Boolean.to_js_boolean(scene == Control.Shake))
         onBackdropPress={(_) => controlAction(Control.(ChangeScene(Home))); }
-        backdropColor=Colors.yellowPrimaryString
-        backdropOpacity=0.4
         animationOut="zoomOutDown"
         animationOutTiming=1000.
         backdropTransitionInTiming=1000.
         backdropTransitionOutTiming=1000.
       >
-        <Text
-          style=Style.(style([color("black")]))
-          value=self.state.selectedNote.text
-        />
+        <Card2 /*style=Style.(style([color("black")]))*/>
+          <Text
+            style=Style.(style([color("black")]))
+            value=self.state.selectedNote.text
+          />
+        </Card2>
       </Modal2>
       <SceneChangeButton
         onPress=((_event) => self.send(SelectNote))

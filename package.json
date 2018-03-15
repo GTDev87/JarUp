@@ -20,6 +20,7 @@
     "bs-platform": "^2.2.2",
     "bs-react-native": "^0.5.0",
     "expo": "^24.0.0",
+    "native-base": "^2.3.10",
     "react": "16.0.0",
     "react-native": "0.51.0",
     "react-native-animatable": "^1.2.4",

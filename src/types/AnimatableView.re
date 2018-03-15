@@ -1,5 +1,5 @@
 [@bs.module "react-native-animatable"]
-external modal : ReasonReact.reactClass = "View";
+external view : ReasonReact.reactClass = "View";
 
 let make = (
   ~style=?,
@@ -7,7 +7,7 @@ let make = (
   ~duration,
   children) =>
   ReasonReact.wrapJsForReason(
-    ~reactClass=modal,
+    ~reactClass=view,
     ~props={
       "style": Js.Nullable.fromOption(style),
       "animation": animation,
