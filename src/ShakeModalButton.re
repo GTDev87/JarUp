@@ -39,13 +39,37 @@ let make = (~controlAction, ~scene, ~notes, _children) => {
         animationOutTiming=1000.
         backdropTransitionInTiming=1000.
         backdropTransitionOutTiming=1000.
+        style=Style.(style([
+          /*borderWidth(4.),*/
+          margin(Pt(0.)),
+          marginTop(Pt(Dimension.topBarHeight)),
+        ]))
       >
-        <Card2 /*style=Style.(style([color("black")]))*/>
-          <Text
-            style=Style.(style([color("black")]))
-            value=self.state.selectedNote.text
-          />
-        </Card2>
+        <TouchableOpacity
+          style=Style.(style([
+            flex(1.),
+          ]))
+          onPress=(() => controlAction(Control.(ChangeScene(Home))))
+        >
+          <Card2
+            style=Style.(style([
+              backgroundColor(self.state.selectedNote.color |> Colors.colorToActualColor),
+              /*borderWidth(4.),*/
+
+              flex(1.),
+            ]))
+          >
+          
+            <View
+              style=Style.(style([
+                marginHorizontal(Pt(50.)), /* raw number wrong!!!*/
+                marginTop(Pt(200.)), /* raw number wrong!!!*/
+              ]))
+            >
+              <H3>(self.state.selectedNote.text)</H3>
+            </View>
+          </Card2>
+        </TouchableOpacity>
       </Modal2>
       <SceneChangeButton
         onPress=((_event) => self.send(SelectNote))

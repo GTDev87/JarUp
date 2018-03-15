@@ -3,26 +3,12 @@ open Control;
 
 let storageKey = "Illume.state";
 
-let colorToString(color) =
-  switch(color) {
-  | Control.Red => "red"
-  | Control.Orange => "orange"
-  | Control.Yellow => "yellow"
-};
-
-let stringToColor(colorStr) =
-  switch(colorStr) {
-  | "red" => Control.Red
-  | "orange" => Control.Orange
-  | "yellow" => Control.Yellow
-  | _ => Control.Red
-  };
 
 let jsonifyNote = ({id, text, color}) =>
   Js.Dict.fromList([
     ("id", id |> float_of_int |> Js.Json.number),
     ("text",  Js.Json.string(text)),
-    ("color", (color |> colorToString |> Js.Json.string)),
+    ("color", (color |> Colors.colorToString |> Js.Json.string)),
     ("time", id |> float_of_int |> Js.Json.number),
   ]);
 
@@ -30,7 +16,7 @@ let decodeNote = (json) => {
   Json.Decode.{
     id: json |> field("id", int),
     text: json |> field("text", string),
-    color: json |> field("color", string) |> stringToColor,
+    color: json |> field("color", string) |> Colors.stringToColor,
     time: json |> field("time", int),
   }
 };
