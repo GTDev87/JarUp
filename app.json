@@ -6,8 +6,8 @@
     "version": "0.0.1",
     "icon": "./assets/icons/logo.png",
     "loading": {
-      "icon": "./assets/icons/landing.png",
-      "hideExponentText": true
+      "hideExponentText": true,
+      "backgroundImage": "./assets/icons/landing_big.png"
     }
   }
 }

@@ -28,24 +28,34 @@ let make = (~controlAction, ~scene, _children) => {
         animationOutTiming=1000.
         backdropTransitionInTiming=1000.
         backdropTransitionOutTiming=1000.
+        style=Style.(style([
+          flex(1.),
+        ]))
       >
-        <Text
-          style=Style.(style([color("black")]))
-          value="What awesome things happend to you today?"
-        />
-        <TextInput
-          style=Style.(
-            style([
-              height(Pt(40.)),
-              borderColor("black"),
-              borderWidth(1.),
-              color("black"),
-            ]))
-          onChangeText=((noteText) => self.send(UpdateNote(noteText)))
-          onSubmitEditing=((_event) => {
-            Control.AddNoteAndToHome(self.state.noteText) |> controlAction;
-          })
-        />
+        <Card2
+          style=Style.(style([
+            /*backgroundColor(self.state.selectedNote.color |> Colors.colorToActualColor),*/
+            flex(1.),
+          ]))
+        >
+          <Text
+            style=Style.(style([color("black")]))
+            value="What awesome things happend to you today?"
+          />
+          <TextInput
+            style=Style.(
+              style([
+                height(Pt(40.)),
+                borderColor("black"),
+                borderWidth(1.),
+                color("black"),
+              ]))
+            onChangeText=((noteText) => self.send(UpdateNote(noteText)))
+            onSubmitEditing=((_event) => {
+              Control.AddNoteAndToHome(self.state.noteText) |> controlAction;
+            })
+          />
+        </Card2>
       </Modal2>
       <SceneChangeButton
         onPress=((_event) => {

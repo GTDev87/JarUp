@@ -54,8 +54,6 @@ let make = (~controlAction, ~scene, ~notes, _children) => {
           <Card2
             style=Style.(style([
               backgroundColor(self.state.selectedNote.color |> Colors.colorToActualColor),
-              /*borderWidth(4.),*/
-
               flex(1.),
             ]))
           >
