@@ -3,6 +3,8 @@ type papercolor =
   | Orange
   | Yellow;
 
+let papercolors = [Red, Orange, Yellow];
+
 type note = {
   id: int,
   text: string,
@@ -21,9 +23,5 @@ type state = {scene, notes};
 
 type action =
   | ChangeScene(scene)
+  | AddNoteAndToHome(string)
   | Rehydrate(notes);
-
-
-
-
-

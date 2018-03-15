@@ -5,11 +5,21 @@ let plusIcon : Image.imageSource = Image.Required(plusImage);
 
 let iconDimension = 30.;
 
-let component = ReasonReact.statelessComponent("AddModalButton");
+type state = { noteText: string };
+
+type action =
+  | UpdateNote(string);
+
+let component = ReasonReact.reducerComponent("AddModalButton");
 
 let make = (~controlAction, ~scene, _children) => {
   ...component,
-  render: (_self) =>
+  initialState: () : state => {noteText: ""},
+  reducer: fun (action, _state : state) =>
+    switch action {
+    | UpdateNote(noteText) => ReasonReact.Update({noteText: noteText})
+    },
+  render: (self) =>
     <View>
       <Modal2
         isVisible=(Js.Boolean.to_js_boolean(scene == Control.Add))
@@ -33,7 +43,10 @@ let make = (~controlAction, ~scene, _children) => {
               borderWidth(1.),
               color("black"),
             ]))
-          onSubmitEditing=((_) => controlAction(Control.(ChangeScene(Home))))
+          onChangeText=((noteText) => self.send(UpdateNote(noteText)))
+          onSubmitEditing=((_event) => {
+            Control.AddNoteAndToHome(self.state.noteText) |> controlAction;
+          })
         />
       </Modal2>
       <SceneChangeButton
