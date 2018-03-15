@@ -25,12 +25,12 @@ let make = (_children) => {
   didUpdate: ({newSelf}) => Persistence.persist(newSelf.state.notes),
   didMount: (self) => Persistence.rehydrate(self),
   initialState: () : Control.state => ({scene: Control.Home, notes: []}),
-  reducer: fun (action, state: Control.state) =>
+  reducer: (action, state: Control.state) =>
     switch action {
     | Rehydrate(notes) => ReasonReact.Update({...state, notes})
     | AddNoteAndToHome(text) => ReasonReact.Update(addNoteToState(state, text))
     | ChangeScene(scene) => ReasonReact.Update {...state, scene}
     },
-  render: fun (self) =>
+  render: (self) =>
     <HomeView controlAction=self.send scene=self.state.scene notes=self.state.notes />
 };

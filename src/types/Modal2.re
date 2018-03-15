@@ -16,16 +16,16 @@ let make = (
   ReasonReact.wrapJsForReason(
     ~reactClass=modal,
     ~props={
-      "style": Js.Nullable.from_opt(style),
+      "style": Js.Nullable.fromOption(style),
       "isVisible": isVisible,
-      "backdropColor": Js.Nullable.from_opt(backdropColor),
-      "backdropOpacity": Js.Nullable.from_opt(backdropOpacity),
+      "backdropColor": Js.Nullable.fromOption(backdropColor),
+      "backdropOpacity": Js.Nullable.fromOption(backdropOpacity),
       "onBackdropPress": onBackdropPress,
-      "animationIn": Js.Nullable.from_opt(animationIn),
-      "animationOut": Js.Nullable.from_opt(animationOut),
-      "animationOutTiming": Js.Nullable.from_opt(animationOutTiming),
-      "backdropTransitionInTiming": Js.Nullable.from_opt(backdropTransitionInTiming),
-      "backdropTransitionOutTiming": Js.Nullable.from_opt(backdropTransitionOutTiming),
+      "animationIn": Js.Nullable.fromOption(animationIn),
+      "animationOut": Js.Nullable.fromOption(animationOut),
+      "animationOutTiming": Js.Nullable.fromOption(animationOutTiming),
+      "backdropTransitionInTiming": Js.Nullable.fromOption(backdropTransitionInTiming),
+      "backdropTransitionOutTiming": Js.Nullable.fromOption(backdropTransitionOutTiming),
     },
     children
   );

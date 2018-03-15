@@ -109,7 +109,7 @@ let make = (_children) => {
     switch action {
     | Open => ReasonReact.Update({modalOpen: true})
     | Close => ReasonReact.Update({modalOpen: false})
-    },
+  },
   render: (self) =>
     <View>
       <Modal2
