@@ -22,11 +22,18 @@ let component = ReasonReact.reducerComponent("ShakeModalButton");
 let make = (~controlAction, ~scene, ~notes, _children) => {
   ...component, 
   initialState: () => ({selectedNote: defaultNote }),
-  reducer: fun (action, state) =>
+  reducer: fun (action, _state) =>
     switch action {
-    | SelectNote => ReasonReact.Update({selectedNote: selectRandomNote(notes)})
+    | SelectNote => ReasonReact.UpdateWithSideEffects(
+      {selectedNote: selectRandomNote(notes)},
+      (_self => controlAction(Control.(ChangeScene(Shake)))) /* investigate this */
+    )
     },
-  render: (self) =>
+  render: (self) => {
+    "notes:" |> Js.log;
+    notes |> Js.log;
+    "state.selectedNote:" |> Js.log;
+    self.state.selectedNote |> Js.log;
     <View>
       <Modal2
         isVisible=(Js.Boolean.to_js_boolean(scene == Control.Shake))
@@ -44,8 +51,9 @@ let make = (~controlAction, ~scene, ~notes, _children) => {
         />
       </Modal2>
       <SceneChangeButton
-        onPress=((_event) => controlAction(Control.(ChangeScene(Shake))))
+        onPress=((_event) => self.send(SelectNote))
         icon=squiggleIcon
       />
-    </View>
+    </View>;
+  }
 };

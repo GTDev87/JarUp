@@ -24,7 +24,7 @@ let make = (_children) => {
   ...component,
   didUpdate: ({newSelf}) => Persistence.persist(newSelf.state.notes),
   didMount: (self) => Persistence.rehydrate(self),
-  initialState: () : Control.state => ({scene: Control.Add, notes: []}),
+  initialState: () : Control.state => ({scene: Control.Home, notes: []}),
   reducer: fun (action, state: Control.state) =>
     switch action {
     | Rehydrate(notes) => ReasonReact.Update({...state, notes})
