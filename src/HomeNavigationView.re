@@ -130,7 +130,7 @@ let make = (_children) => {
                 marginVertical(Pt(15.)),
                 padding(Pt(10.)),
                 color(Colors.redPrimaryString),
-                fontSize(Float(16.)),
+                fontSize(Float(10.)),
                 borderWidth(5.),
                 borderRadius(5.),
                 backgroundColor("white"),
