@@ -12,10 +12,6 @@ let illumeUpArrowIcon : Image.imageSource = Image.Required(illumeUpArrowImage);
 let illumeDownArrowImage : Packager.required = Packager.require("../../../assets/icons/arrow_down.png");
 let illumeDownArrowIcon : Image.imageSource = Image.Required(illumeDownArrowImage);
 
-let faqBorderImage : Packager.required = Packager.require("../../../assets/icons/faq_border.png");
-let faqBorderIcon : Image.imageSource = Image.Required(faqBorderImage);
-
-
 let navigationHeight = 40.;
 let largeDimension = 30000.;
 let illumeFontHeight = 20.;
@@ -23,16 +19,9 @@ let illumeFontWidth = 80.;
 let triangleSize = 20.;
 
 /* following are duplicate from HomeDisplayView */
-let distanceFromWindowEdge = 40;
+let distanceFromWindowEdge = 30;
 let windowWidth = Dimensions.get(`window)##width;
 let faqWidth = float_of_int(windowWidth - distanceFromWindowEdge * 2);
-
-let flipIcon = (isUp) => {
-  switch (isUp) {
-  | true => illumeUpArrowIcon
-  | false => illumeDownArrowIcon
-  }
-};
 
 type action =
   | Open
@@ -54,8 +43,8 @@ type arrowDirection =
 
 let modalOpenToArrowDirection = (modalOpen) => {
   switch(modalOpen) {
-  | true => Down
-  | false => Up
+  | false => Down
+  | true => Up
   }
 };
 
@@ -125,30 +114,26 @@ let make = (_children) => {
       >
         <View
           style=Style.(
-            style([position(Relative),
-            marginTop(Pt(navigationHeight)),
-            width(Pt(faqWidth)),
-            alignSelf(Center),
-          ]))
+            style([
+              position(Relative),
+              marginTop(Pt(navigationHeight)),
+              width(Pt(faqWidth)),
+              alignSelf(Center),
+            ]
+          ))
         >
-          <Image
-            style=Style.(
-              style([
-                alignSelf(Center),
-                maxHeight(Pt(400.)), /* I don't like this value here */
-                position(Absolute),
-              ]))
-            resizeMode=`contain
-            source=faqBorderIcon
-          />
           <View
             style=Style.(
               style([
                 position(Absolute),
                 marginHorizontal(Pt(25.)),
                 marginVertical(Pt(15.)),
+                padding(Pt(10.)),
                 color(Colors.redPrimaryString),
                 fontSize(Float(16.)),
+                borderWidth(5.),
+                borderRadius(5.),
+                backgroundColor("white"),
               ])
             )
           >
@@ -158,7 +143,7 @@ let make = (_children) => {
               style=Style.(
                 style([
                   fontWeight(`_500),
-                  color(Colors.redPrimaryString),
+                  color("black"),
                   fontSize(Float(16.)),
                 ])
               )
