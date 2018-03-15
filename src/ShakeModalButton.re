@@ -4,11 +4,11 @@ open BsReactNative;
 let squiggleImage : Packager.required = Packager.require("../../../assets/icons/squiggle.png");
 let squiggleIcon : Image.imageSource = Image.Required(squiggleImage);
 
-let defaultNote = {
-  Control.id: -1,
-  Control.text: "You have not added an awesome moment yet.",
-  Control.color: Control.Red,
-  Control.time: 0,
+let defaultNote : Control.note = Control.{
+  id: -1,
+  text: "You have not added an awesome moment yet.",
+  color: Control.Red,
+  time: 0,
 };
 
 let selectRandomNote = (notes) => Utils.selectRandomFromList(notes, defaultNote);
@@ -24,16 +24,13 @@ let make = (~controlAction, ~scene, ~notes, _children) => {
   initialState: () => ({selectedNote: defaultNote }),
   reducer: fun (action, _state) =>
     switch action {
-    | SelectNote => ReasonReact.UpdateWithSideEffects(
-      {selectedNote: selectRandomNote(notes)},
-      (_self => controlAction(Control.(ChangeScene(Shake)))) /* investigate this */
-    )
+    | SelectNote =>
+      ReasonReact.UpdateWithSideEffects(
+        {selectedNote: selectRandomNote(notes)},
+        (_self => controlAction(Control.(ChangeScene(Shake))))
+      ) /* investigate this */
     },
-  render: (self) => {
-    "notes:" |> Js.log;
-    notes |> Js.log;
-    "state.selectedNote:" |> Js.log;
-    self.state.selectedNote |> Js.log;
+  render: (self) =>
     <View>
       <Modal2
         isVisible=(Js.Boolean.to_js_boolean(scene == Control.Shake))
@@ -54,6 +51,5 @@ let make = (~controlAction, ~scene, ~notes, _children) => {
         onPress=((_event) => self.send(SelectNote))
         icon=squiggleIcon
       />
-    </View>;
-  }
+    </View>
 };
