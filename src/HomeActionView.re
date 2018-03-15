@@ -7,7 +7,7 @@ let squiggleIcon : Image.imageSource = Image.Required(squiggleImage);
 
 let marginBottomVal = 30.;
 
-let make = (~controlAction, ~scene, _children) => {
+let make = (~controlAction, ~scene, ~notes, _children) => {
   ...component,
   render: (_self) =>
     <View
@@ -19,12 +19,6 @@ let make = (~controlAction, ~scene, _children) => {
         ])
     )>
       <AddModalButton scene=scene controlAction=controlAction />
-      <SceneChangeButton
-        onPress=((_event) => {
-          Js.log("Shake");
-          controlAction(Control.(ChangeScene(Shake)));
-        })
-        icon=squiggleIcon
-      />
+      <ShakeModalButton scene=scene controlAction=controlAction notes=notes />
     </View>
 };

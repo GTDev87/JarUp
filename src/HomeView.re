@@ -3,7 +3,7 @@ open BsReactNative;
 let component = ReasonReact.statelessComponent("HomeView");
 let borderWidthSize = 5.;
 
-let make = (~controlAction, ~scene, _children) => {
+let make = (~controlAction, ~scene, ~notes, _children) => {
   ...component,
   render: (_self) =>
     <View
@@ -17,6 +17,6 @@ let make = (~controlAction, ~scene, _children) => {
     >
       <HomeNavigationView />
       <HomeDisplayView  />
-      <HomeActionView controlAction=controlAction scene=scene />
+      <HomeActionView controlAction=controlAction scene=scene notes=notes />
     </View>
 };
