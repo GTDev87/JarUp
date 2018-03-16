@@ -137,34 +137,31 @@ let make = (_children) => {
           ]))
           onPress=(() => self.send(Close))
         >
-          <Grid>
-            <Row size=1 />
-            <Row size=11>
-              <Card2
-                style=Style.(style([
-                  backgroundColor("white"),
-                  flex(1.),
-                ]))
-              >
-                <Row size=1>
-                  { illumeImageFn(Orange) }
-                </Row>
-                <Row size=10>
-                  <Text
-                    value=faqText
-                    style=Style.(
-                      style([
-                        fontWeight(`_500),
-                        color("black"),
-                        fontSize(Float(16.)),
-                        margin(Pt(16.)),
-                      ])
-                    )
-                  />
-                </Row>
-              </Card2>
-            </Row>
-          </Grid>
+          <CardBorderLayout
+            backColor="white"
+            headerText=""
+            footerText="Keep those good vibes rolling."
+          >
+            <Grid>
+              <Row size=1>
+                { illumeImageFn(Orange) }
+              </Row>
+              <Row size=2 />
+              <Row size=7>
+                <Text
+                  value=faqText
+                  style=Style.(
+                    style([
+                      fontWeight(`_500),
+                      color("black"),
+                      fontSize(Float(16.)),
+                      margin(Pt(16.)),
+                    ])
+                  )
+                />
+              </Row>
+            </Grid>
+          </CardBorderLayout>
         </TouchableOpacity>
       </Modal2>
       <Grid
