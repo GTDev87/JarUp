@@ -34,6 +34,8 @@ let make = (~controlAction, ~scene, _children) => {
         backdropTransitionOutTiming=1000.
         style=Style.(style([
           flex(1.),
+          margin(Pt(0.)),
+          marginTop(Pt(Dimension.topBarHeight)),
         ]))
       >
         <Card2

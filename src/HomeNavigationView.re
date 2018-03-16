@@ -126,48 +126,46 @@ let make = (_children) => {
         animationOut="slideOutUp"
         style=Style.(
           style([
-            justifyContent(FlexStart),
+            margin(Pt(0.)),
+            marginTop(Pt(Dimension.topBarHeight)),
           ])
         )
       >
-        <View
-          style=Style.(
-            style([
-              position(Relative),
-              marginTop(Pt(navigationHeight)),
-              width(Pt(faqWidth)),
-              alignSelf(Center),
-            ]
-          ))
+        <TouchableOpacity
+          style=Style.(style([
+            flex(1.),
+          ]))
+          onPress=(() => self.send(Close))
         >
-          <View
-            style=Style.(
-              style([
-                position(Absolute),
-                marginHorizontal(Pt(25.)),
-                marginVertical(Pt(15.)),
-                padding(Pt(10.)),
-                color(Colors.redPrimaryString),
-                fontSize(Float(10.)),
-                borderWidth(5.),
-                borderRadius(5.),
-                backgroundColor("white"),
-              ])
-            )
-          >
-            { illumeImageFn(Orange) }
-            <Text
-              value=faqText
-              style=Style.(
-                style([
-                  fontWeight(`_500),
-                  color("black"),
-                  fontSize(Float(16.)),
-                ])
-              )
-            />
-          </View>
-        </View>
+          <Grid>
+            <Row size=1 />
+            <Row size=11>
+              <Card2
+                style=Style.(style([
+                  backgroundColor("white"),
+                  flex(1.),
+                ]))
+              >
+                <Row size=1>
+                  { illumeImageFn(Orange) }
+                </Row>
+                <Row size=10>
+                  <Text
+                    value=faqText
+                    style=Style.(
+                      style([
+                        fontWeight(`_500),
+                        color("black"),
+                        fontSize(Float(16.)),
+                        margin(Pt(16.)),
+                      ])
+                    )
+                  />
+                </Row>
+              </Card2>
+            </Row>
+          </Grid>
+        </TouchableOpacity>
       </Modal2>
       <Grid
         style=Style.(
