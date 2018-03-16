@@ -146,8 +146,8 @@ let make = (_children) => {
               <Row size=1>
                 { illumeImageFn(Orange) }
               </Row>
-              <Row size=2 />
-              <Row size=7>
+              <Row size=1 />
+              <Row size=8>
                 <Text
                   value=faqText
                   style=Style.(
