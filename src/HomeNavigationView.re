@@ -66,12 +66,10 @@ let arrowImageFn = (arrowDirection) =>
   <Image
     style=Style.(
       style([
-        flex(1.),
-        height(Pt(triangleSize)),
-        alignSelf(Center),
-        maxWidth(Pt(triangleSize)),
-        overflow(Hidden),
-        marginTop(Pt(10.)),
+        maxHeight(Pct(100.)),
+        maxWidth(Pct(100.)),
+        marginTop(Pct(20.)),
+        alignItems(FlexStart),
       ]))
     resizeMode=`contain
     source=arrowDirectionToIcon(arrowDirection)
@@ -81,15 +79,29 @@ let illumeImageFn = (imageColor) =>
   <Image
     style=Style.(
       style([
-        flex(1.),
-        height(Pt(illumeFontHeight)),
-        alignSelf(Center),
-        maxWidth(Pt(illumeFontWidth)),
-        overflow(Hidden),
+        maxHeight(Pct(100.)),
+        maxWidth(Pct(100.)),
       ]))
     resizeMode=`contain
     source=colorToImage(imageColor)
   />;
+
+let fullIllumeImage = (modalOpen) =>
+  <Grid
+    style=Style.(
+      style([
+        flex(1.),
+        flexDirection(Row),
+      ])
+    )
+  >
+    <Col size=4>
+      { illumeImageFn(Black) }
+    </Col>
+    <Col>
+      { modalOpen |> modalOpenToArrowDirection |> arrowImageFn }
+    </Col>
+  </Grid>;
 
 let make = (_children) => {
   ...component,
@@ -100,7 +112,13 @@ let make = (_children) => {
     | Close => ReasonReact.Update({modalOpen: false})
   },
   render: (self) =>
-    <View>
+    <View
+      style=Style.(
+        style([
+          flex(1.),
+        ])
+      )
+    >
       <Modal2
         isVisible=(Js.Boolean.to_js_boolean(self.state.modalOpen))
         onBackdropPress={(_) => self.send(Close); }
@@ -151,19 +169,27 @@ let make = (_children) => {
           </View>
         </View>
       </Modal2>
-      <TouchableOpacity onPress=((_) => self.send(Open))>
-        <View
-          style=Style.(
-            style([
-              flexDirection(Row),
-              justifyContent(Center),
-              height(Pt(navigationHeight)),
-            ])
-          )
-        >
-          { illumeImageFn(Black) }
-          { self.state.modalOpen |> modalOpenToArrowDirection |> arrowImageFn }
-        </View>
-      </TouchableOpacity>
+      <Grid
+        style=Style.(
+          style([
+            flex(1.),
+            backgroundColor("transparent"),
+          ]))
+      > 
+        <Col size=1 />
+        <Col size=3>
+          <TouchableOpacity
+            style=Style.(
+              style([
+                flex(1.),
+              ])
+            )
+            onPress=((_) => self.send(Open))
+          >
+            { fullIllumeImage(self.state.modalOpen) }
+          </TouchableOpacity>
+        </Col>
+        <Col size=1 />
+      </Grid>
     </View>
   };

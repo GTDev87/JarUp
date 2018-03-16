@@ -31,7 +31,11 @@ let make = (~controlAction, ~scene, ~notes, _children) => {
       ) /* investigate this */
     },
   render: (self) =>
-    <View>
+    <View
+      style=Style.(style([
+        flex(1.)
+      ]))
+    >
       <Modal2
         isVisible=(Js.Boolean.to_js_boolean(scene == Control.Shake))
         onBackdropPress={(_) => controlAction(Control.(ChangeScene(Home))); }
@@ -40,7 +44,6 @@ let make = (~controlAction, ~scene, ~notes, _children) => {
         backdropTransitionInTiming=1000.
         backdropTransitionOutTiming=1000.
         style=Style.(style([
-          /*borderWidth(4.),*/
           margin(Pt(0.)),
           marginTop(Pt(Dimension.topBarHeight)),
         ]))
@@ -57,7 +60,6 @@ let make = (~controlAction, ~scene, ~notes, _children) => {
               flex(1.),
             ]))
           >
-          
             <View
               style=Style.(style([
                 marginHorizontal(Pt(50.)), /* raw number wrong!!!*/

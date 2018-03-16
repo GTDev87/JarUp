@@ -20,7 +20,11 @@ let make = (~controlAction, ~scene, _children) => {
     | UpdateNote(noteText) => ReasonReact.Update({noteText: noteText})
     },
   render: (self) =>
-    <View>
+    <View
+      style=Style.(style([
+        flex(1.)
+      ]))
+    >
       <Modal2
         isVisible=(Js.Boolean.to_js_boolean(scene == Control.Add))
         onBackdropPress={(_) => controlAction(Control.(ChangeScene(Home))); }
@@ -34,7 +38,6 @@ let make = (~controlAction, ~scene, _children) => {
       >
         <Card2
           style=Style.(style([
-            /*backgroundColor(self.state.selectedNote.color |> Colors.colorToActualColor),*/
             flex(1.),
           ]))
         >
@@ -46,8 +49,6 @@ let make = (~controlAction, ~scene, _children) => {
             style=Style.(
               style([
                 height(Pt(40.)),
-                borderColor("black"),
-                borderWidth(1.),
                 color("black"),
               ]))
             onChangeText=((noteText) => self.send(UpdateNote(noteText)))

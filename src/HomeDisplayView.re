@@ -30,27 +30,30 @@ let make = (_children) => {
         ReasonReact.Update({animationRef: animationRef})
     },
   render: (self) =>
-    <AnimatableView
-      ref={self.handle(setSectionRef)}
-      animation="wobble"
-      duration=6000
-      style=Style.(
-        style([
-          flex(1.),
-        ])
-      )
-    >
-      <Image
-        style=Style.(
-          style([
-            flex(1.),
-            width(Pt(jarWidth)),
-            alignSelf(Center),
-            maxHeight(Pt(largeDimension)),
-            overflow(Hidden),
-          ]))
-        resizeMode=`contain
-        source=jarIcon
-      />
-    </AnimatableView>
+    <Grid>
+      <Col size=1/>
+      <Col size=3>
+        <AnimatableView
+          ref={self.handle(setSectionRef)}
+          animation="wobble"
+          duration=6000
+          style=Style.(
+            style([
+              flex(1.),
+            ])
+          )
+        >
+          <Image
+            style=Style.(
+              style([
+                maxWidth(Pct(100.)),
+                maxHeight(Pct(100.)),
+              ]))
+            resizeMode=`contain
+            source=jarIcon
+          />
+        </AnimatableView>
+      </Col>
+      <Col size=1/>
+    </Grid>
 };
