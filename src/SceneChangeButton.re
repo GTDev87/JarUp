@@ -2,7 +2,7 @@ open BsReactNative;
 
 let component = ReasonReact.statelessComponent("SceneChangeButton");
 
-let make = (~onPress, ~icon, _children) => {
+let make = (~onPress, children) => {
   ...component,
   render: (_self) =>
     <TouchableOpacity
@@ -13,14 +13,6 @@ let make = (~onPress, ~icon, _children) => {
           margin(Pt(10.))
         ]))
     >
-      <Image
-        style=Style.(
-          style([
-            maxWidth(Pct(100.)),
-            maxHeight(Pct(100.)),
-          ]))
-        resizeMode=`contain
-        source=icon
-      />
+      ...children
     </TouchableOpacity>
 };

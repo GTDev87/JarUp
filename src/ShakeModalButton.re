@@ -72,7 +72,9 @@ let make = (~controlAction, ~scene, ~notes, _children) => {
   render: (self) =>
     <View
       style=Style.(style([
-        flex(1.)
+        flex(1.),
+        justifyContent(Center),
+        alignItems(Center),
       ]))
     >
       <Modal2
@@ -112,9 +114,8 @@ let make = (~controlAction, ~scene, ~notes, _children) => {
           </CardBorderLayout>
         </TouchableOpacity>
       </Modal2>
-      <SceneChangeButton
-        onPress=((_event) => self.send(SelectNote))
-        icon=squiggleIcon
-      />
+      <SceneChangeButton onPress=((_event) => self.send(SelectNote))>
+        <Foundation name="shuffle" size=30 color="gray" />
+      </SceneChangeButton>
     </View>
 };

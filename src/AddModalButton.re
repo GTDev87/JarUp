@@ -33,7 +33,9 @@ let make = (~controlAction, ~scene, _children) => {
   render: (self) =>
     <View
       style=Style.(style([
-        flex(1.)
+        flex(1.),
+        justifyContent(Center),
+        alignItems(Center),
       ]))
     >
       <Modal2
@@ -75,11 +77,8 @@ let make = (~controlAction, ~scene, _children) => {
           </Grid>
         </CardBorderLayout>
       </Modal2>
-      <SceneChangeButton
-        onPress=((_event) => {
-          controlAction(Control.(ChangeScene(Add)));
-        })
-        icon=plusIcon
-      />
+      <SceneChangeButton onPress=((_event) => controlAction(Control.(ChangeScene(Add))))>
+        <Foundation name="pencil" size=30 color="gray" />
+      </SceneChangeButton>
     </View>
 };
