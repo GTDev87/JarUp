@@ -4,5 +4,5 @@ let topBarHeight =
   (
     Platform.os === Platform.IOS
     ? 20.
-    : float_of_int(StatBar.constants##currentHeight)
+    : 0./*float_of_int(StatBar.constants##currentHeight)*/
   );
