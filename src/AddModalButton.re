@@ -61,7 +61,7 @@ let make = (~controlAction, ~scene, _children) => {
             <Row size=3>
               <Text
                 style=questionStyle
-                value="What awesome things happend to you today?"
+                value="What awesome thing happend to you today?"
               />
             </Row>
             <Row size=2>
