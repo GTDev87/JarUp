@@ -46,7 +46,7 @@ let make = (~controlAction, ~scene, _children) => {
         style=Style.(style([
           flex(1.),
           margin(Pt(0.)),
-          marginTop(Pt(Dimension.topBarHeight)),
+          marginTop(Pt(Dimension.cardTop)),
         ]))
       >
         <CardBorderLayout

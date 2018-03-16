@@ -86,7 +86,7 @@ let make = (~controlAction, ~scene, ~notes, _children) => {
         backdropTransitionOutTiming=1000.
         style=Style.(style([
           margin(Pt(0.)),
-          marginTop(Pt(Dimension.topBarHeight)),
+          marginTop(Pt(Dimension.cardTop)),
         ]))
       >
         <TouchableOpacity
