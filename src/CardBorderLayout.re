@@ -10,6 +10,8 @@ let headerFooterTextStyle = Style.(style([
   fontFamily("Arial Rounded MT Bold"),
 ]));
 
+let borderColorDepth = 3.;
+
 let childrenContentStyle = Style.(style([
   marginHorizontal(Pct(marginLeftCardContent)),
 ]));
@@ -22,10 +24,18 @@ let make = (~backColor, ~footerText, ~headerText, children) => {
     <Card2
       style=Style.(style([
         backgroundColor(backColor),
+        borderColor("black"),
+        borderRadius(borderColorDepth),
         flex(1.),
       ]))
     >
-      <Grid>
+      <Grid
+        style=Style.(style([
+          borderColor("black"),
+          borderWidth(borderColorDepth),
+          borderRadius(borderColorDepth),
+        ]))
+      >
         <Row size=1 >
           <Text
             value=headerText
