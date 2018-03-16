@@ -43,7 +43,7 @@ let textStyle = Style.(style([
 
 let choiceToIcon = (iconType) =>
   switch (iconType) {
-  | Heart => <EnTypo name="heart" size=iconFontSize color="black" /*style=iconStyle*/ />
+  | Heart => <Entypo name="heart" size=iconFontSize color="black" /*style=iconStyle*/ />
   | Smile => <SimpleLineIcons name="emotsmile" size=iconFontSize color="black" /*style=iconStyle*/ />
   | Happy => <FontAwesome name="child" size=iconFontSize color="black" /*style=iconStyle*/ />
   };

@@ -1,4 +1,4 @@
-[@bs.module "@expo/vector-icons"] external icons : ReasonReact.reactClass = "EnTypo";
+[@bs.module "@expo/vector-icons"] external icons : ReasonReact.reactClass = "Entypo";
 
 let make = (~name: string, ~size: int, ~color: string, ~style=?, children) =>
   ReasonReact.wrapJsForReason(
