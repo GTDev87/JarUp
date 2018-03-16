@@ -12,6 +12,18 @@ type action =
 
 let component = ReasonReact.reducerComponent("AddModalButton");
 
+let questionStyle = Style.(style([
+  fontFamily("Arial Rounded MT Bold"),
+  fontSize(Float(40.)),
+]));
+
+let inputTextStyle = Style.(style([
+  fontFamily("Arial"),
+  fontSize(Float(28.)),
+  borderBottomWidth(1.),
+  flex(1.),
+]));
+
 let make = (~controlAction, ~scene, _children) => {
   ...component,
   initialState: () : state => {noteText: ""},
@@ -38,27 +50,31 @@ let make = (~controlAction, ~scene, _children) => {
           marginTop(Pt(Dimension.topBarHeight)),
         ]))
       >
-        <Card2
-          style=Style.(style([
-            flex(1.),
-          ]))
+        <CardBorderLayout
+          backColor="white"
+          headerText="ILLUME A MEMORY"
+          footerText="Keep those good vibes rolling."
         >
-          <Text
-            style=Style.(style([color("black")]))
-            value="What awesome things happend to you today?"
-          />
-          <TextInput
-            style=Style.(
-              style([
-                height(Pt(40.)),
-                color("black"),
-              ]))
-            onChangeText=((noteText) => self.send(UpdateNote(noteText)))
-            onSubmitEditing=((_event) => {
-              Control.AddNoteAndToHome(self.state.noteText) |> controlAction;
-            })
-          />
-        </Card2>
+          <Grid>
+            <Row size=2 />
+            <Row size=3>
+              <Text
+                style=questionStyle
+                value="What awesome things happend to you today?"
+              />
+            </Row>
+            <Row size=2>
+              <TextInput
+                style=inputTextStyle
+                onChangeText=((noteText) => self.send(UpdateNote(noteText)))
+                onSubmitEditing=((_event) => {
+                  Control.AddNoteAndToHome(self.state.noteText) |> controlAction;
+                })
+              />
+            </Row>
+            <Row size=3 />
+          </Grid>
+        </CardBorderLayout>
       </Modal2>
       <SceneChangeButton
         onPress=((_event) => {

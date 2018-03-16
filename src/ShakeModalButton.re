@@ -20,7 +20,7 @@ type icon =
   | Happy;
 
 let headerFooterTextStyle = Style.(style([
-  marginLeft(Pct(marginLeftCardContent)),
+  marginHorizontal(Pct(marginLeftCardContent)),
   marginVertical(Pct(5.)),
   color("gray"),
   alignItems(Center),
@@ -32,11 +32,9 @@ let iconStyle = Style.(style([
 ]));
 
 let iconViewStyle = Style.(style([
-  marginLeft(Pct(marginLeftCardContent)),
 ]));
 
 let textStyle = Style.(style([
-  marginLeft(Pct(marginLeftCardContent)),
   fontFamily("Arial Rounded MT Bold"),
   fontSize(Float(40.)),
 ]));
@@ -95,19 +93,12 @@ let make = (~controlAction, ~scene, ~notes, _children) => {
           ]))
           onPress=(() => controlAction(Control.(ChangeScene(Home))))
         >
-          <Card2
-            style=Style.(style([
-              backgroundColor(self.state.selectedNote.color |> Colors.colorToActualColor),
-              flex(1.),
-            ]))
+          <CardBorderLayout
+            backColor=(self.state.selectedNote.color |> Colors.colorToActualColor)
+            headerText="SHUFFLECARD"
+            footerText="Keep those good vibes rolling."
           >
             <Grid>
-              <Row size=1 >
-                <Text
-                  value="SHUFFLECARD"
-                  style=headerFooterTextStyle
-                />
-              </Row>
               <Row size=4 />
               <Row size=2>
                 <View style=iconViewStyle>
@@ -117,12 +108,8 @@ let make = (~controlAction, ~scene, ~notes, _children) => {
               <Row size=4>
                 <Text style=textStyle value=self.state.selectedNote.text />
               </Row>
-              <Row size=1>
-                <Text style=headerFooterTextStyle value="Keep those good vibes rolling" />
-              </Row>
             </Grid>
-            
-          </Card2>
+          </CardBorderLayout>
         </TouchableOpacity>
       </Modal2>
       <SceneChangeButton
