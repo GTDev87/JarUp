@@ -35,7 +35,8 @@ let selectRandomNote = (notes) => Utils.selectRandomFromList(notes, defaultNote)
 
 type state = {selectedNote: Control.note, icon};
 type action =
-  | SelectNote;
+  | SelectNote
+  | NoAction;
 
 let component = ReasonReact.reducerComponent("PullCard");
 
@@ -49,6 +50,7 @@ let make = (~controlAction, ~scene, ~notes, children) => {
         {selectedNote: selectRandomNote(notes), icon: chooseRandomIcon()},
         (_self => controlAction(Control.(ChangeScene(Shake))))
       ) /* investigate this */
+    | NoAction => ReasonReact.NoUpdate
     },
   render: (self) =>
     <View style=Style.(style([flex(1.)]))>
@@ -89,7 +91,7 @@ let make = (~controlAction, ~scene, ~notes, children) => {
           </CardBorderLayout>
         </TouchableOpacity>
       </Modal2>
-      <TouchableOpacity onPress=((_event) => self.send(SelectNote))>
+      <TouchableOpacity onPress=((_event) => self.send((scene == Control.Shake) ? NoAction : SelectNote))>
         ...children
       </TouchableOpacity>
     </View>
