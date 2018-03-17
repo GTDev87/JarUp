@@ -40,6 +40,8 @@ type action =
 
 let component = ReasonReact.reducerComponent("PullCard");
 
+let isShakeScene = (scene) => scene == Control.Shake;
+
 let make = (~controlAction, ~scene, ~notes, children) => {
   ...component, 
   initialState: () => ({selectedNote: defaultNote, icon: Heart }),
@@ -55,7 +57,7 @@ let make = (~controlAction, ~scene, ~notes, children) => {
   render: (self) =>
     <View style=Style.(style([flex(1.)]))>
       <Modal2
-        isVisible=(Js.Boolean.to_js_boolean(scene == Control.Shake))
+        isVisible=(scene |> isShakeScene |> Js.Boolean.to_js_boolean)
         onBackdropPress={(_) => controlAction(Control.(ChangeScene(Home))); }
         animationOut="zoomOutDown"
         animationOutTiming=1000.
@@ -91,7 +93,7 @@ let make = (~controlAction, ~scene, ~notes, children) => {
           </CardBorderLayout>
         </TouchableOpacity>
       </Modal2>
-      <TouchableOpacity onPress=((_event) => self.send((scene == Control.Shake) ? NoAction : SelectNote))>
+      <TouchableOpacity onPress=((_event) => self.send((scene |> isShakeScene) ? NoAction : SelectNote))>
         ...children
       </TouchableOpacity>
     </View>
