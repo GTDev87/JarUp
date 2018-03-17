@@ -21,7 +21,7 @@ let setSectionRef = (theRef, {ReasonReact.state}) => {
   state.animationRef := Js.Nullable.toOption(theRef);
 };
 
-let make = (_children) => {
+let make = (~controlAction, ~scene, ~notes, _children) => {
   ...component,
   initialState: () => ({animationRef: ref(None)}),
   reducer: fun (action, _state : state) =>
@@ -37,21 +37,19 @@ let make = (_children) => {
           ref={self.handle(setSectionRef)}
           animation="wobble"
           duration=6000
-          style=Style.(
-            style([
-              flex(1.),
-            ])
-          )
+          style=Style.(style([flex(1.)]))
         >
-          <Image
-            style=Style.(
-              style([
-                maxWidth(Pct(100.)),
-                maxHeight(Pct(100.)),
-              ]))
-            resizeMode=`contain
-            source=jarIcon
-          />
+          <PullCard notes=notes scene=scene controlAction=controlAction>
+            <Image
+              style=Style.(
+                style([
+                  maxWidth(Pct(100.)),
+                  maxHeight(Pct(100.)),
+                ]))
+              resizeMode=`contain
+              source=jarIcon
+            />
+          </PullCard>
         </AnimatableView>
       </Col>
       <Col size=1/>

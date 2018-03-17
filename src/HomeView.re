@@ -19,7 +19,7 @@ let make = (~controlAction, ~scene, ~notes, _children) => {
             <HomeNavigationView />
           </Row>
           <Row size=10>
-            <HomeDisplayView  />
+            <HomeDisplayView controlAction=controlAction scene=scene notes=notes />
           </Row>
           <Row size=1>
             <HomeActionView controlAction=controlAction scene=scene notes=notes />
