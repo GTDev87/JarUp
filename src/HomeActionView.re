@@ -7,7 +7,7 @@ let squiggleIcon : Image.imageSource = Image.Required(squiggleImage);
 
 let marginBottomVal = 30.;
 
-let make = (~controlAction, ~scene, ~notes, _children) => {
+let make = (~controlAction, ~scene, ~openPullCardModal, _children) => {
   ...component,
   render: (_self) =>
     <Grid>
@@ -16,7 +16,7 @@ let make = (~controlAction, ~scene, ~notes, _children) => {
       </Col>
       <Col size=3/>
       <Col size=1>
-        <ShakeModalButton scene=scene controlAction=controlAction notes=notes />
+        <ShakeModalButton openPullCardModal=openPullCardModal/>
       </Col>
     </Grid>
 };

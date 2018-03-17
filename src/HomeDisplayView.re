@@ -21,7 +21,7 @@ let setSectionRef = (theRef, {ReasonReact.state}) => {
   state.animationRef := Js.Nullable.toOption(theRef);
 };
 
-let make = (~controlAction, ~scene, ~notes, _children) => {
+let make = (~openPullCardModal, _children) => {
   ...component,
   initialState: () => ({animationRef: ref(None)}),
   reducer: fun (action, _state : state) =>
@@ -39,7 +39,7 @@ let make = (~controlAction, ~scene, ~notes, _children) => {
           duration=6000
           style=Style.(style([flex(1.)]))
         >
-          <PullCard notes=notes scene=scene controlAction=controlAction>
+          <TouchableOpacity onPress=openPullCardModal>
             <Image
               style=Style.(
                 style([
@@ -49,7 +49,7 @@ let make = (~controlAction, ~scene, ~notes, _children) => {
               resizeMode=`contain
               source=jarIcon
             />
-          </PullCard>
+          </TouchableOpacity>
         </AnimatableView>
       </Col>
       <Col size=1/>

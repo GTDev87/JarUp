@@ -5,7 +5,7 @@ let squiggleIcon : Image.imageSource = Image.Required(squiggleImage);
 
 let component = ReasonReact.statelessComponent("ShakeModalButton");
 
-let make = (~controlAction, ~scene, ~notes, _children) => {
+let make = (~openPullCardModal, _children) => {
   ...component, 
   render: (_self) =>
     <View
@@ -15,8 +15,8 @@ let make = (~controlAction, ~scene, ~notes, _children) => {
         alignItems(Center),
       ]))
     >
-      <PullCard notes=notes scene=scene controlAction=controlAction>
+      <TouchableOpacity onPress=openPullCardModal>
         <Foundation name="shuffle" size=30 color="gray" />
-      </PullCard>
+      </TouchableOpacity>
     </View>
 };

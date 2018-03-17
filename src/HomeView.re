@@ -2,7 +2,8 @@ open BsReactNative;
 
 let component = ReasonReact.statelessComponent("HomeView");
 
-let make = (~controlAction, ~scene, ~notes, _children) => {
+
+let make = (~controlAction, ~scene, ~openPullCardModal, _children) => {
   ...component,
   render: (_self) =>
     <View
@@ -19,10 +20,10 @@ let make = (~controlAction, ~scene, ~notes, _children) => {
             <HomeNavigationView />
           </Row>
           <Row size=10>
-            <HomeDisplayView controlAction=controlAction scene=scene notes=notes />
+            <HomeDisplayView openPullCardModal=openPullCardModal/>
           </Row>
           <Row size=1>
-            <HomeActionView controlAction=controlAction scene=scene notes=notes />
+            <HomeActionView controlAction=controlAction scene=scene openPullCardModal=openPullCardModal/>
           </Row>
         </Grid>
       </Container>
