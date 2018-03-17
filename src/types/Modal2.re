@@ -3,7 +3,7 @@ external modal : ReasonReact.reactClass = "default";
 
 let make = (
   ~isVisible,
-  ~onBackdropPress,
+  ~onBackdropPress=?,
   ~animationOutTiming=?,
   ~backdropTransitionInTiming=?,
   ~backdropTransitionOutTiming=?,

@@ -58,7 +58,6 @@ let make = (~controlAction, ~scene, ~notes, children) => {
     <View style=Style.(style([flex(1.)]))>
       <Modal2
         isVisible=(scene |> isShakeScene |> Js.Boolean.to_js_boolean)
-        onBackdropPress={(_) => controlAction(Control.(ChangeScene(Home))); }
         animationOut="zoomOutDown"
         animationOutTiming=1000.
         backdropTransitionInTiming=1000.
