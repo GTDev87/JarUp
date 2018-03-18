@@ -43,7 +43,7 @@ let make = (~controlAction, ~scene, ~notes, _children) => {
         scene=scene
         pullCardState=self.state
         addNoteAndGoHome=((_event) => controlAction(Control.AddNoteAndToHome(self.state.PullCardState.noteText)))
-        addNoteFn=((_event) => self.send(PullCardState.UpdateNote(self.state.PullCardState.noteText)))
+        updateNoteFn=((text) => self.send(PullCardState.UpdateNote(text)))
       />
       <HomeView
         controlAction=controlAction

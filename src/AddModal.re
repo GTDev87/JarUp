@@ -13,7 +13,7 @@ let inputTextStyle = Style.(style([
   flex(1.),
 ]));
 
-let make = (~addNoteAndGoHome, ~addNoteFn, ~controlAction, _children) => {
+let make = (~addNoteAndGoHome, ~updateNoteFn, ~controlAction, _children) => {
   ...component,
   render: (_self) =>
     <CardBorderLayout
@@ -41,7 +41,7 @@ let make = (~addNoteAndGoHome, ~addNoteFn, ~controlAction, _children) => {
         <Row size=2 >
           <TextInput
             style=inputTextStyle
-            onChangeText=((text) => addNoteFn(text))
+            onChangeText=updateNoteFn
             onSubmitEditing=addNoteAndGoHome
           />
         </Row>
