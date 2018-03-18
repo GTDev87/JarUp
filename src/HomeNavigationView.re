@@ -45,22 +45,6 @@ let illumeImageFn = () =>
     source=orangeIllumeIcon
   />;
 
-let fullIllumeImage = (modalOpen) =>
-  <Grid
-    style=Style.(
-      style([
-        flex(1.),
-        flexDirection(Row),
-      ])
-    )
-  >
-    <Col />
-    <Col size=3>
-      { illumeImageFn() }
-    </Col>
-    <Col />
-  </Grid>;
-
 let make = (_children) => {
   ...component,
   initialState: () => {modalOpen: false},
@@ -135,14 +119,23 @@ let make = (_children) => {
         <Col size=1 />
         <Col size=3>
           <TouchableOpacity
-            style=Style.(
-              style([
-                flex(1.),
-              ])
-            )
+            style=Style.(style([flex(1.),]))
             onPress=((_) => self.send(Open))
           >
-            { fullIllumeImage(self.state.modalOpen) }
+             <Grid
+              style=Style.(
+                style([
+                  flex(1.),
+                  flexDirection(Row),
+                ])
+              )
+            >
+              <Col />
+              <Col size=3>
+                { illumeImageFn() }
+              </Col>
+              <Col />
+            </Grid>
           </TouchableOpacity>
         </Col>
         <Col size=1 />

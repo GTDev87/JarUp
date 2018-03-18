@@ -19,14 +19,21 @@ let isShakeScene = (scene) => scene == Control.Shake;
 
 let make = (~controlAction, ~scene, ~notes, _children) => {
   ...component, 
-  initialState: () : PullCardState.state => ({selectedNote: defaultNote, icon: PullCardState.Heart }),
-  reducer: fun (action, _state) =>
+  initialState: () : PullCardState.state => (
+    {
+      noteText: "",
+      selectedNote: defaultNote,
+      icon: PullCardState.Heart
+    }
+  ),
+  reducer: fun (action, state : PullCardState.state) =>
     switch action {
     | PullCardState.SelectNote =>
       ReasonReact.UpdateWithSideEffects(
-        {selectedNote: selectRandomNote(notes), icon: chooseRandomIcon()},
+        {...state, selectedNote: selectRandomNote(notes), icon: chooseRandomIcon()},
         (_self => controlAction(Control.(ChangeScene(Shake))))
       ) /* investigate this */
+    | PullCardState.UpdateNote(noteText) => ReasonReact.Update({...state, noteText})
     | PullCardState.NoAction => ReasonReact.NoUpdate
     },
   render: (self) =>
@@ -35,10 +42,11 @@ let make = (~controlAction, ~scene, ~notes, _children) => {
         controlAction=controlAction
         scene=scene
         pullCardState=self.state
+        addNoteAndGoHome=((_event) => controlAction(Control.AddNoteAndToHome(self.state.PullCardState.noteText)))
+        addNoteFn=((_event) => self.send(PullCardState.UpdateNote(self.state.PullCardState.noteText)))
       />
       <HomeView
         controlAction=controlAction
-        scene=scene
         openPullCardModal=(
           (_event) => self.send((scene |> isShakeScene) ? PullCardState.NoAction : PullCardState.SelectNote))
       />
