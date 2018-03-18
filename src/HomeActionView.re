@@ -1,5 +1,3 @@
-open BsReactNative;
-
 let component = ReasonReact.statelessComponent("ActionView");
 
 let marginBottomVal = 30.;

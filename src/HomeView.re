@@ -6,14 +6,7 @@ let component = ReasonReact.statelessComponent("HomeView");
 let make = (~controlAction, ~openPullCardModal, _children) => {
   ...component,
   render: (_self) =>
-    <View
-      style=Style.(
-        style([
-          flex(1.),
-          backgroundColor("transparent"),
-        ])
-      )
-    >
+    <View style=Style.(style([flex(1.),]))>
       <Container>
         <Grid>
           <Row size=1>

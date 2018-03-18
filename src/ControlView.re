@@ -32,5 +32,5 @@ let make = (_children) => {
     | ChangeScene(scene) => ReasonReact.Update {...state, scene}
     },
   render: (self) =>
-    <PullCardReducer controlAction=self.send scene=self.state.scene notes=self.state.notes/>
+    <PullCardReducer controlAction=self.send scene=self.state.scene notes=self.state.notes />
 };
