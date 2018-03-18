@@ -2,7 +2,7 @@ open BsReactNative;
 
 let marginLeftCardContent = 5.;
 
-let headerFooterTextStyle = Style.(style([
+let headerTextStyle = Style.(style([
   margin(Pct(3.)),
   color("gray"),
   textAlign(Center),
@@ -37,7 +37,7 @@ let generateHeader = (headerText) =>
       <Row size=1>
         <Text
           value=(ifNullEmptyString(headerText))
-          style=headerFooterTextStyle
+          style=headerTextStyle
           numberOfLines=1
           minimumFontScale=0.5
           allowFontScaling=true
@@ -45,7 +45,13 @@ let generateHeader = (headerText) =>
       </Row>
   };
 
-let make = (~backColor, ~footerText, ~headerText=?, children) => {
+let getFooterColor = (footerColor) =>
+  switch(footerColor) {
+  | None => "gray"
+  | Some(color) => color
+  };
+
+let make = (~backColor, ~footerText, ~headerText=?, ~footerColor=?, children) => {
   ...component, 
   render: (_self) =>
     <Card2
@@ -70,7 +76,13 @@ let make = (~backColor, ~footerText, ~headerText=?, children) => {
         <Row size=1>
           <Text
             value=footerText
-            style=headerFooterTextStyle
+            style=Style.(style([
+              margin(Pct(3.)),
+              color(getFooterColor(footerColor)),
+              textAlign(Center),
+              textAlignVertical(Center),
+              fontFamily("Arial Rounded MT Bold"),
+            ]))
             numberOfLines=1
             minimumFontScale=0.5
             allowFontScaling=true

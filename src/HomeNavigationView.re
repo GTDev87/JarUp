@@ -82,6 +82,7 @@ let illumeImageFn = (imageColor) =>
         maxHeight(Pct(100.)),
         maxWidth(Pct(100.)),
         marginTop(Pct(5.)),
+        alignItems(FlexStart),
       ]))
     resizeMode=`contain
     source=colorToImage(imageColor)
@@ -141,10 +142,14 @@ let make = (_children) => {
           <CardBorderLayout
             backColor="white"
             footerText="Keep those good vibes rolling."
+            footerColor=Colors.redPrimaryString
           >
             <Grid>
               <Row size=1>
-                { illumeImageFn(Orange) }
+                <Col style=Style.(style([paddingRight(Pct(5.)),]))>
+                  { illumeImageFn(Orange) }
+                </Col>
+                <Col size=1 />
               </Row>
               <Row size=1 />
               <Row size=8>
@@ -155,7 +160,7 @@ let make = (_children) => {
                       fontWeight(`_500),
                       color("black"),
                       fontSize(Float(16.)),
-                      margin(Pt(16.)),
+                      textAlign(Justify)
                     ])
                   )
                 />
