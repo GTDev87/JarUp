@@ -7,15 +7,11 @@ let defaultNote : Control.note = Control.{
   time: 0,
 };
 
-
-
 let iconChoices = [PullCardState.Heart, PullCardState.Smile, PullCardState.Happy];
 
 let chooseRandomIcon = () => Utils.selectRandomFromList(iconChoices, Heart);
 
 let selectRandomNote = (notes) => Utils.selectRandomFromList(notes, defaultNote);
-
-
 
 let component = ReasonReact.reducerComponent("PullCardReducer");
 

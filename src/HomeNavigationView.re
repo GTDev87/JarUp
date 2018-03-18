@@ -139,7 +139,6 @@ let make = (_children) => {
         >
           <CardBorderLayout
             backColor="white"
-            headerText=""
             footerText="Keep those good vibes rolling."
           >
             <Grid>

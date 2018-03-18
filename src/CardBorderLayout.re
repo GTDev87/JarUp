@@ -3,10 +3,10 @@ open BsReactNative;
 let marginLeftCardContent = 5.;
 
 let headerFooterTextStyle = Style.(style([
-  marginHorizontal(Pct(marginLeftCardContent)),
-  marginVertical(Pct(5.)),
+  margin(Pct(3.)),
   color("gray"),
-  alignItems(Center),
+  textAlign(Center),
+  textAlignVertical(Center),
   fontFamily("Arial Rounded MT Bold"),
 ]));
 
@@ -18,7 +18,34 @@ let childrenContentStyle = Style.(style([
 
 let component = ReasonReact.statelessComponent("CardBorderLayout");
 
-let make = (~backColor, ~footerText, ~headerText, children) => {
+let contentRows = (headerText) =>
+  switch(headerText) {
+  | None => 11
+  | Some(_) => 10
+  };
+
+let ifNullEmptyString = (headerText) =>
+  switch(headerText) {
+  | None => ""
+  | Some(text) => text
+  };
+
+let generateHeader = (headerText) =>
+  switch(headerText) {
+  | None => <View />
+  | Some(_) =>
+      <Row size=1>
+        <Text
+          value=(ifNullEmptyString(headerText))
+          style=headerFooterTextStyle
+          numberOfLines=1
+          minimumFontScale=0.5
+          allowFontScaling=true
+        />
+      </Row>
+  };
+
+let make = (~backColor, ~footerText, ~headerText=?, children) => {
   ...component, 
   render: (_self) =>
     <Card2
@@ -36,17 +63,18 @@ let make = (~backColor, ~footerText, ~headerText, children) => {
           borderRadius(borderColorDepth),
         ]))
       >
-        <Row size=1 >
-          <Text
-            value=headerText
-            style=headerFooterTextStyle
-          />
-        </Row>
-        <Row size=10 style=childrenContentStyle>
+        { generateHeader(headerText) }
+        <Row size=contentRows(headerText) style=childrenContentStyle>
           ...children
         </Row>
         <Row size=1>
-          <Text style=headerFooterTextStyle value=footerText />
+          <Text
+            value=footerText
+            style=headerFooterTextStyle
+            numberOfLines=1
+            minimumFontScale=0.5
+            allowFontScaling=true
+          />
         </Row>
       </Grid>
     </Card2>
