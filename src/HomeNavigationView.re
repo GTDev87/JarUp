@@ -81,6 +81,7 @@ let illumeImageFn = (imageColor) =>
       style([
         maxHeight(Pct(100.)),
         maxWidth(Pct(100.)),
+        marginTop(Pct(5.)),
       ]))
     resizeMode=`contain
     source=colorToImage(imageColor)
