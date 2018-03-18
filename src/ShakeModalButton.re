@@ -1,8 +1,5 @@
 open BsReactNative;
 
-let squiggleImage : Packager.required = Packager.require("../../../assets/icons/squiggle.png");
-let squiggleIcon : Image.imageSource = Image.Required(squiggleImage);
-
 let component = ReasonReact.statelessComponent("ShakeModalButton");
 
 let make = (~openPullCardModal, _children) => {

@@ -1,8 +1,5 @@
 open BsReactNative;
 
-let plusImage : Packager.required = Packager.require("../../../assets/icons/plus.png");
-let plusIcon : Image.imageSource = Image.Required(plusImage);
-
 type state = { noteText: string };
 
 type action =

@@ -1,16 +1,7 @@
 open BsReactNative;
 
-let blackIllumeImage : Packager.required = Packager.require("../../../assets/icons/illume_type_b.png");
-let blackIllumeIcon : Image.imageSource = Image.Required(blackIllumeImage);
-
 let orangeIllumeImage : Packager.required = Packager.require("../../../assets/icons/illume_type_y_o.png");
 let orangeIllumeIcon : Image.imageSource = Image.Required(orangeIllumeImage);
-
-let illumeUpArrowImage : Packager.required = Packager.require("../../../assets/icons/arrow_up.png");
-let illumeUpArrowIcon : Image.imageSource = Image.Required(illumeUpArrowImage);
-
-let illumeDownArrowImage : Packager.required = Packager.require("../../../assets/icons/arrow_down.png");
-let illumeDownArrowIcon : Image.imageSource = Image.Required(illumeDownArrowImage);
 
 let navigationHeight = 40.;
 let largeDimension = 30000.;
@@ -41,41 +32,7 @@ type arrowDirection =
   | Up
   | Down;
 
-let modalOpenToArrowDirection = (modalOpen) => {
-  switch(modalOpen) {
-  | false => Down
-  | true => Up
-  }
-};
-
-let colorToImage = (imageColor) => {
-  switch(imageColor) {
-  | Black => blackIllumeIcon
-  | Orange => orangeIllumeIcon
-  }
-};
-
-let arrowDirectionToIcon = (imageColor) => {
-  switch(imageColor) {
-  | Up => illumeUpArrowIcon
-  | Down => illumeDownArrowIcon
-  }
-};
-
-let arrowImageFn = (arrowDirection) =>
-  <Image
-    style=Style.(
-      style([
-        maxHeight(Pct(100.)),
-        maxWidth(Pct(100.)),
-        marginTop(Pct(20.)),
-        alignItems(FlexStart),
-      ]))
-    resizeMode=`contain
-    source=arrowDirectionToIcon(arrowDirection)
-  />;
-
-let illumeImageFn = (imageColor) =>
+let illumeImageFn = () =>
   <Image
     style=Style.(
       style([
@@ -85,7 +42,7 @@ let illumeImageFn = (imageColor) =>
         alignItems(FlexStart),
       ]))
     resizeMode=`contain
-    source=colorToImage(imageColor)
+    source=orangeIllumeIcon
   />;
 
 let fullIllumeImage = (modalOpen) =>
@@ -97,12 +54,11 @@ let fullIllumeImage = (modalOpen) =>
       ])
     )
   >
-    <Col size=4>
-      { illumeImageFn(Black) }
+    <Col />
+    <Col size=3>
+      { illumeImageFn() }
     </Col>
-    <Col>
-      { modalOpen |> modalOpenToArrowDirection |> arrowImageFn }
-    </Col>
+    <Col />
   </Grid>;
 
 let make = (_children) => {
@@ -147,7 +103,7 @@ let make = (_children) => {
             <Grid>
               <Row size=1>
                 <Col style=Style.(style([paddingRight(Pct(5.)),]))>
-                  { illumeImageFn(Orange) }
+                  { illumeImageFn() }
                 </Col>
                 <Col size=1 />
               </Row>

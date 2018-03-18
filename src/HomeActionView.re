@@ -2,9 +2,6 @@ open BsReactNative;
 
 let component = ReasonReact.statelessComponent("ActionView");
 
-let squiggleImage : Packager.required = Packager.require("../../../assets/icons/squiggle.png");
-let squiggleIcon : Image.imageSource = Image.Required(squiggleImage);
-
 let marginBottomVal = 30.;
 
 let make = (~controlAction, ~scene, ~openPullCardModal, _children) => {
