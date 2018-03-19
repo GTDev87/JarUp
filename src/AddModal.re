@@ -33,6 +33,9 @@ let make = (~addNoteAndGoHome, ~updateNoteFn, ~controlAction, _children) => {
                 <Text
                   style=questionStyle
                   value="What awesome thing happend to you today?"
+                  numberOfLines=3
+                  minimumFontScale=0.5
+                  allowFontScaling=true
                 />
               </Row>
             </Grid>
