@@ -85,7 +85,6 @@ let make = (~backColor, ~footerText, ~headerText=?, ~footerColor=?, children) =>
               textAlignVertical(Center),
               flex(1.),
               fontFamily("Arial Rounded MT Bold"),
-              borderWidth(1.),
             ]))
             numberOfLines=1
             minimumFontScale=0.5
