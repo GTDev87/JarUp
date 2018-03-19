@@ -5,9 +5,10 @@ let marginLeftCardContent = 5.;
 let headerTextStyle = Style.(style([
   margin(Pct(3.)),
   color("gray"),
-  textAlign(Center),
+  textAlign(Left),
   textAlignVertical(Center),
   fontFamily("Arial Rounded MT Bold"),
+  flex(1.),
 ]));
 
 let borderColorDepth = 3.;
@@ -41,6 +42,7 @@ let generateHeader = (headerText) =>
           numberOfLines=1
           minimumFontScale=0.5
           allowFontScaling=true
+          adjustsFontSizeToFit=true
         />
       </Row>
   };
@@ -79,13 +81,16 @@ let make = (~backColor, ~footerText, ~headerText=?, ~footerColor=?, children) =>
             style=Style.(style([
               margin(Pct(3.)),
               color(getFooterColor(footerColor)),
-              textAlign(Center),
+              textAlign(Left),
               textAlignVertical(Center),
+              flex(1.),
               fontFamily("Arial Rounded MT Bold"),
+              borderWidth(1.),
             ]))
             numberOfLines=1
             minimumFontScale=0.5
             allowFontScaling=true
+            adjustsFontSizeToFit=true
           />
         </Row>
       </Grid>

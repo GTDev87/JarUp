@@ -4,6 +4,8 @@ let component = ReasonReact.statelessComponent("AddModal");
 
 let questionStyle = Style.(style([
   fontFamily("Arial Rounded MT Bold"),
+  flex(1.),
+  borderWidth(1.),
   fontSize(Float(40.)),
 ]));
 
@@ -11,6 +13,7 @@ let inputTextStyle = Style.(style([
   fontFamily("Arial"),
   fontSize(Float(28.)),
   flex(1.),
+  borderWidth(1.),
 ]));
 
 let make = (~addNoteAndGoHome, ~updateNoteFn, ~controlAction, _children) => {
@@ -36,6 +39,7 @@ let make = (~addNoteAndGoHome, ~updateNoteFn, ~controlAction, _children) => {
                   numberOfLines=3
                   minimumFontScale=0.5
                   allowFontScaling=true
+                  adjustsFontSizeToFit=true
                 />
               </Row>
             </Grid>
@@ -46,6 +50,7 @@ let make = (~addNoteAndGoHome, ~updateNoteFn, ~controlAction, _children) => {
             style=inputTextStyle
             onChangeText=updateNoteFn
             onSubmitEditing=addNoteAndGoHome
+            numberOfLines=3
           />
         </Row>
         <Row size=3>
