@@ -18,7 +18,7 @@ type action =
   | Open
   | Close;
 
-let faqText = "Stores moments that paint a smile on your face and reminds you of them in times when it can be hard to smile. From small acts of kindness to big milestones, by pressing the (+) button a small note box will appear, you can write down the moment and then save it. illume will then store it in the memory jar for Safe keeping. You can view your happy memories by pressing on the (shuffle) button. The shuffle button will randomly select a memory and display it to you so you can be reminded of the wonderful moments small and big that surround you in your life.";
+let faqTextPart = "illume stores moments that make you smile and reminds you fof them when you are feeling down.  By pressing the pencil a notebox will appear.  Write down a moment and save it.  Illume stores your notes as memories in the jar for safe keeping.  To view your stored memories press on the jar and a random memory will pop up.  You can view several memories by pressing the jar several times.";
 
 type state = {modalOpen: bool};
 
@@ -94,12 +94,12 @@ let make = (_children) => {
               <Row size=1 />
               <Row size=8>
                 <Text
-                  value=faqText
+                  value=faqTextPart
                   style=Style.(
                     style([
                       fontWeight(`_500),
                       color("black"),
-                      fontSize(Float(16.)),
+                      fontSize(Float(20.)),
                       textAlign(Justify)
                     ])
                   )
