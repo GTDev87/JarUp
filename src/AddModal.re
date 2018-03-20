@@ -19,8 +19,7 @@ let make = (~addNoteAndGoHome, ~updateNoteFn, ~controlAction, _children) => {
   render: (_self) =>
     <CardBorderLayout
       backColor="white"
-      headerText="ILLUME A MEMORY"
-      footerText="Keep those good vibes rolling."
+      footerText="Goodvibes Everyday"
     >
       <Grid>
         <Row size=5>

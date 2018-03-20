@@ -19,12 +19,6 @@ let childrenContentStyle = Style.(style([
 
 let component = ReasonReact.statelessComponent("CardBorderLayout");
 
-let contentRows = (headerText) =>
-  switch(headerText) {
-  | None => 11
-  | Some(_) => 10
-  };
-
 let ifNullEmptyString = (headerText) =>
   switch(headerText) {
   | None => ""
@@ -71,8 +65,15 @@ let make = (~backColor, ~footerText, ~headerText=?, ~footerColor=?, children) =>
           borderRadius(borderColorDepth),
         ]))
       >
-        { generateHeader(headerText) }
-        <Row size=contentRows(headerText) style=childrenContentStyle>
+        <Row size=1>
+          <Col size=2>
+            <View style=Style.(style([marginLeft(Pct(10.))]))>
+              <IllumeImage />
+            </View>
+          </Col>
+          <Col size=3 />
+        </Row>
+        <Row size=10 style=childrenContentStyle>
           ...children
         </Row>
         <Row size=1>

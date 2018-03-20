@@ -27,8 +27,7 @@ let make = (~pullCardState : PullCardState.state, ~controlAction, _children) => 
     >
       <CardBorderLayout
         backColor=(pullCardState.selectedNote.color |> Colors.colorToActualColor)
-        headerText="SHUFFLECARD"
-        footerText="Keep those good vibes rolling."
+        footerText="Goodvibes Everyday"
       >
         <Grid>
           <Row size=4 />

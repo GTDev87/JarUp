@@ -1,8 +1,5 @@
 open BsReactNative;
 
-let orangeIllumeImage : Packager.required = Packager.require("../../../assets/icons/illume_type_y_o.png");
-let orangeIllumeIcon : Image.imageSource = Image.Required(orangeIllumeImage);
-
 let navigationHeight = 40.;
 let largeDimension = 30000.;
 let illumeFontHeight = 20.;
@@ -24,26 +21,9 @@ type state = {modalOpen: bool};
 
 let component = ReasonReact.reducerComponent("HomeNavigationView");
 
-type imageColor =
-  | Black
-  | Orange;
-
 type arrowDirection =
   | Up
   | Down;
-
-let illumeImageFn = () =>
-  <Image
-    style=Style.(
-      style([
-        maxHeight(Pct(100.)),
-        maxWidth(Pct(100.)),
-        marginTop(Pct(5.)),
-        alignItems(FlexStart),
-      ]))
-    resizeMode=`contain
-    source=orangeIllumeIcon
-  />;
 
 let make = (_children) => {
   ...component,
@@ -81,16 +61,10 @@ let make = (_children) => {
         >
           <CardBorderLayout
             backColor="white"
-            footerText="Keep those good vibes rolling."
+            footerText="Goodvibes Everyday"
             footerColor=Colors.redPrimaryString
           >
             <Grid>
-              <Row size=1>
-                <Col style=Style.(style([paddingRight(Pct(5.)),]))>
-                  { illumeImageFn() }
-                </Col>
-                <Col size=1 />
-              </Row>
               <Row size=1 />
               <Row size=8>
                 <Text
@@ -132,7 +106,7 @@ let make = (_children) => {
             >
               <Col />
               <Col size=3>
-                { illumeImageFn() }
+                <IllumeImage />
               </Col>
               <Col />
             </Grid>
