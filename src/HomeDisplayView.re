@@ -3,7 +3,6 @@ open BsReactNative;
 let image : Packager.required = Packager.require("../../../assets/icons/roundedjar.png");
 let jarIcon : Image.imageSource = Image.Required(image);
 
-
 let largeDimension = 30000.;
 let distanceFromWindowEdge = 40;
 
@@ -33,24 +32,54 @@ let make = (~openPullCardModal, _children) => {
     <Grid>
       <Col size=1/>
       <Col size=3>
-        <AnimatableView
-          ref={self.handle(setSectionRef)}
-          animation="wobble"
-          duration=6000
-          style=Style.(style([flex(1.)]))
+        <View
+          style=Style.(
+            style([
+              flex(1.),
+              position(Relative),
+              borderWidth(3.),
+            ])
+          )
         >
-          <TouchableOpacity onPress=openPullCardModal>
-            <Image
-              style=Style.(
-                style([
-                  maxWidth(Pct(100.)),
-                  maxHeight(Pct(100.)),
-                ]))
-              resizeMode=`contain
-              source=jarIcon
-            />
-          </TouchableOpacity>
-        </AnimatableView>
+          <FallingPaperStage />
+          <AnimatableView
+            ref={self.handle(setSectionRef)}
+            animation="wobble"
+            duration=6000
+            style=Style.(style([
+              /*flex(1.),*/
+              position(Absolute),
+              borderWidth(2.),
+              borderColor("blue"),
+              width(Pct(100.)),
+              height(Pct(100.)),
+            ]))
+          >
+            <TouchableOpacity
+              onPress=openPullCardModal
+              style=Style.(style([
+                flex(1.),
+                borderColor("green"),
+                borderWidth(3.),
+                maxWidth(Pct(100.)),
+                maxHeight(Pct(100.)),
+              ]))
+            >
+              <Image
+                style=Style.(
+                  style([
+                    /*flex(1.),*/
+                    maxWidth(Pct(100.)),
+                    maxHeight(Pct(100.)),
+                    borderWidth(1.),
+                    borderColor("cyan"),
+                  ]))
+                resizeMode=`contain
+                source=jarIcon
+              />
+            </TouchableOpacity>
+          </AnimatableView>
+        </View>
       </Col>
       <Col size=1/>
     </Grid>

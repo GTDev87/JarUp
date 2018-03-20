@@ -5,6 +5,10 @@ let make = (
   ~style=?,
   ~animation,
   ~duration,
+  ~delay=?,
+  ~easing=?,
+  ~iterationCount=?,
+  ~useNativeDriver=?,
   children) =>
   ReasonReact.wrapJsForReason(
     ~reactClass=view,
@@ -12,6 +16,10 @@ let make = (
       "style": Js.Nullable.fromOption(style),
       "animation": animation,
       "duration": duration,
+      "delay": Js.Nullable.fromOption(delay),
+      "easing": Js.Nullable.fromOption(easing),
+      "iterationCount": Js.Nullable.fromOption(iterationCount),
+      "useNativeDriver": Js.Nullable.fromOption(useNativeDriver),
     },
     children
   );

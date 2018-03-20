@@ -24,6 +24,7 @@
     "react": "16.0.0",
     "react-native": "0.51.0",
     "react-native-animatable": "^1.2.4",
+    "react-native-fit-image": "^1.5.4",
     "react-native-modal": "^5.2.0",
     "reason-react": "^0.3.2"
   }
