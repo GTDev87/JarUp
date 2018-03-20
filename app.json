@@ -7,7 +7,6 @@
     "icon": "./assets/icons/logo.png",
     "loading": {
       "hideExponentText": true,
-      "backgroundImage": "./assets/icons/landing_big.png"
     }
   }
 }

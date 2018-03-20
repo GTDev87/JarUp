@@ -8,6 +8,7 @@ let pickScene = (scene, controlAction, pullCardState, updateNoteFn, addNoteAndGo
   | Control.Shake => <ShakeModal controlAction=controlAction pullCardState=pullCardState />
   | Control.Add => <AddModal updateNoteFn=updateNoteFn controlAction=controlAction addNoteAndGoHome=addNoteAndGoHome/>
   | Control.Home => <View />
+  | Control.Landing => <LandingModal controlAction=controlAction/>
   };
 
 let make = (~addNoteAndGoHome, ~updateNoteFn, ~controlAction, ~scene, ~pullCardState : PullCardState.state, _children) => {

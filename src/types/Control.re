@@ -17,6 +17,7 @@ type notes = list(note);
 type scene =
   | Home
   | Shake
+  | Landing
   | Add;
 
 type state = {scene, notes};
