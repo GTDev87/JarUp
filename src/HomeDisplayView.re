@@ -1,6 +1,6 @@
 open BsReactNative;
 
-let image : Packager.required = Packager.require("../../../assets/icons/roundedjar.png");
+let image : Packager.required = Packager.require("../../../assets/icons/jar.png");
 let jarIcon : Image.imageSource = Image.Required(image);
 
 
