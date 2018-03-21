@@ -46,7 +46,7 @@ let make = (~addNoteAndGoHome, ~updateNoteFn, ~controlAction, _children) => {
               </Grid>
             </TouchableOpacity>
           </Row>
-          <Row size=2 >
+          <Row size=3 >
             <TextInput
               style=inputTextStyle
               onChangeText=updateNoteFn
@@ -55,7 +55,7 @@ let make = (~addNoteAndGoHome, ~updateNoteFn, ~controlAction, _children) => {
               multiline=true
             />
           </Row>
-          <Row size=3>
+          <Row size=2>
             <TouchableOpacity
               style=Style.(style([flex(1.)]))
               onPress=((_event) => controlAction(Control.(ChangeScene(Home))))
