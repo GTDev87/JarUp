@@ -19,7 +19,7 @@ let make = (~addNoteAndGoHome, ~updateNoteFn, ~controlAction, _children) => {
   render: (_self) =>
     <KeyboardAvoidingView
       style=Style.(style([flex(1.)]))
-      behavior="padding"
+      behavior=(Platform.equals(IOS(Phone)) ? "padding" : "")
     >
       <CardBorderLayout
         backColor="white"
