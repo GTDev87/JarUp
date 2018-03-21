@@ -30,28 +30,28 @@ let make = (~openPullCardModal, _children) => {
         ReasonReact.Update({animationRef: animationRef})
     },
   render: (self) =>
-    <Grid>
-      <Col size=1/>
-      <Col size=3>
-        <AnimatableView
-          ref={self.handle(setSectionRef)}
-          animation="wobble"
-          duration=6000
+    <View style=Style.(style([margin(Pct(8.5)), flex(1.)]))>
+      <AnimatableView
+        ref={self.handle(setSectionRef)}
+        animation="wobble"
+        duration=6000
+        style=Style.(style([flex(1.)]))
+      >
+        <TouchableOpacity
+          onPress=openPullCardModal
           style=Style.(style([flex(1.)]))
         >
-          <TouchableOpacity onPress=openPullCardModal>
-            <Image
-              style=Style.(
-                style([
-                  maxWidth(Pct(100.)),
-                  maxHeight(Pct(100.)),
-                ]))
-              resizeMode=`contain
-              source=jarIcon
-            />
-          </TouchableOpacity>
-        </AnimatableView>
-      </Col>
-      <Col size=1/>
-    </Grid>
+          <Image
+            style=Style.(
+              style([
+                flex(1.),
+                unsafeStyleElement("width", Js.Json.null),
+                unsafeStyleElement("height", Js.Json.null),
+              ]))
+            resizeMode=`contain
+            source=jarIcon
+          />
+        </TouchableOpacity>
+      </AnimatableView>
+    </View>
 };
