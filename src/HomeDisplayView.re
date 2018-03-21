@@ -1,8 +1,34 @@
 open BsReactNative;
 
-let image : Packager.required = Packager.require("../../../assets/icons/jar.png");
-let jarIcon : Image.imageSource = Image.Required(image);
+let image : Packager.required = Packager.require("../../../assets/icons/jar_empty.png");
+let jarIconEmpty : Image.imageSource = Image.Required(image);
 
+let image1 : Packager.required = Packager.require("../../../assets/icons/jar_1.png");
+let jarIcon1 : Image.imageSource = Image.Required(image1);
+
+let image2 : Packager.required = Packager.require("../../../assets/icons/jar_2.png");
+let jarIcon2 : Image.imageSource = Image.Required(image2);
+
+let image3 : Packager.required = Packager.require("../../../assets/icons/jar_3.png");
+let jarIcon3 : Image.imageSource = Image.Required(image3);
+
+let image4 : Packager.required = Packager.require("../../../assets/icons/jar_4.png");
+let jarIcon4 : Image.imageSource = Image.Required(image4);
+
+let image5 : Packager.required = Packager.require("../../../assets/icons/jar_5.png");
+let jarIcon5 : Image.imageSource = Image.Required(image5);
+
+let image6 : Packager.required = Packager.require("../../../assets/icons/jar_6.png");
+let jarIcon6 : Image.imageSource = Image.Required(image6);
+
+let image7 : Packager.required = Packager.require("../../../assets/icons/jar_7.png");
+let jarIcon7 : Image.imageSource = Image.Required(image7);
+
+let imageHalf : Packager.required = Packager.require("../../../assets/icons/jar_half.png");
+let jarIconHalf : Image.imageSource = Image.Required(imageHalf);
+
+let imageFull : Packager.required = Packager.require("../../../assets/icons/jar_full.png");
+let jarIconFull : Image.imageSource = Image.Required(imageFull);
 
 let largeDimension = 30000.;
 let distanceFromWindowEdge = 40;
@@ -21,7 +47,21 @@ let setSectionRef = (theRef, {ReasonReact.state}) => {
   state.animationRef := Js.Nullable.toOption(theRef);
 };
 
-let make = (~openPullCardModal, _children) => {
+let iconFromNumberNotes = (numberOfNotes) =>
+  switch(numberOfNotes) {
+  | 0 => jarIconEmpty
+  | 1 => jarIcon1
+  | 2 => jarIcon2
+  | 3 => jarIcon3
+  | 4 => jarIcon4
+  | 5 => jarIcon5
+  | 6 => jarIcon6
+  | 7 => jarIcon7
+  | (8|9|10|11|12|13|14|15) => jarIconHalf
+  | _ => jarIconFull
+  };
+
+let make = (~openPullCardModal, ~notes, _children) => {
   ...component,
   initialState: () => ({animationRef: ref(None)}),
   reducer: fun (action, _state : state) =>
@@ -49,7 +89,7 @@ let make = (~openPullCardModal, _children) => {
                 unsafeStyleElement("height", Js.Json.null),
               ]))
             resizeMode=`contain
-            source=jarIcon
+            source=iconFromNumberNotes(List.length(notes))
           />
         </TouchableOpacity>
       </AnimatableView>

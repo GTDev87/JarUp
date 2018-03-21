@@ -47,6 +47,7 @@ let make = (~controlAction, ~scene, ~notes, _children) => {
       />
       <HomeView
         controlAction=controlAction
+        notes=notes
         openPullCardModal=(
           (_event) => self.send((scene |> isShakeScene) ? PullCardState.NoAction : PullCardState.SelectNote))
       />
