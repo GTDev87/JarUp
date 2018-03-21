@@ -20,30 +20,49 @@ let choiceToIcon = (note : Control.note, iconType) =>
 let make = (~pullCardState : PullCardState.state, ~controlAction, _children) => {
   ...component,
   render: (_self) =>
-    <TouchableOpacity
-      style=Style.(style([
-        flex(1.),
-      ]))
+    <TouchableWithoutFeedback
+      style=Style.(style([flex(1.),]))
       onPress=(() => controlAction(Control.(ChangeScene(Home))))
+      onLongPress=(() =>
+        Alert.(alert(
+          ~title="Delete",
+          ~message="Would you like to delete this note?",
+          ~options=({cancelable: Some(true), onDismiss: None}),
+          ~buttons=[
+            {
+              text: Some("Ok"),
+              onPress: Some(() => controlAction(Control.RemoveNoteAndToHome(pullCardState.selectedNote.id))),
+              style: Some(`default),
+            },
+            {
+              text: Some("Cancel"),
+              onPress: None,
+              style: None,
+            }
+          ],
+          ()
+        )))
     >
-      <CardBorderLayout
-        backColor=(pullCardState.selectedNote.color |> Colors.colorToActualColor)
-        footerText="Goodvibes Everyday"
-      >
-        <Grid>
-          <Row size=4 />
-          <Row size=2>
-            <View>
-              { choiceToIcon(pullCardState.selectedNote, pullCardState.icon) }
-            </View>
-          </Row>
-          <Row size=4>
-            <Text
-              style=textStyle(pullCardState.selectedNote.color)
-              value=pullCardState.selectedNote.text
-            />
-          </Row>
-        </Grid>
-      </CardBorderLayout>
-    </TouchableOpacity>
+      <View style=Style.(style([flex(1.),]))>
+        <CardBorderLayout
+          backColor=(pullCardState.selectedNote.color |> Colors.colorToActualColor)
+          footerText="Goodvibes Everyday"
+        >
+          <Grid>
+            <Row size=4 />
+            <Row size=2>
+              <View>
+                { choiceToIcon(pullCardState.selectedNote, pullCardState.icon) }
+              </View>
+            </Row>
+            <Row size=4>
+              <Text
+                style=textStyle(pullCardState.selectedNote.color)
+                value=pullCardState.selectedNote.text
+              />
+            </Row>
+          </Grid>
+        </CardBorderLayout>
+      </View>
+    </TouchableWithoutFeedback>
 };

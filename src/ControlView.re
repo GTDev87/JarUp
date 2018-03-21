@@ -14,11 +14,17 @@ let textToNote = (text, id) => {
 let addNoteToState = (state, text) => {
   let highestNoteId =
     state.notes
-      |> List.map(_, (note) => note.id)
-      |> List.reduce(_, 0, (x, y) =>(x > y ? x : y));
+    |> List.map(_, (note) => note.id)
+    |> List.reduce(_, 0, (x, y) =>(x > y ? x : y));
   let note = textToNote(text, highestNoteId + 1);
   {notes: [note, ...state.notes], scene: Control.Home};
 };
+
+let removeNoteToState = (state, id) =>
+  {
+    notes: state.notes |> List.keep(_, (note) => note.id != id),
+    scene: Control.Home
+  };
 
 let make = (_children) => {
   ...component,
@@ -29,6 +35,7 @@ let make = (_children) => {
     switch action {
     | Rehydrate(notes) => ReasonReact.Update({...state, notes})
     | AddNoteAndToHome(text) => ReasonReact.Update(addNoteToState(state, text))
+    | RemoveNoteAndToHome(id) => ReasonReact.Update(removeNoteToState(state, id))
     | ChangeScene(scene) => ReasonReact.Update {...state, scene}
     },
   render: (self) =>

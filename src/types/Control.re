@@ -25,4 +25,5 @@ type state = {scene, notes};
 type action =
   | ChangeScene(scene)
   | AddNoteAndToHome(string)
-  | Rehydrate(notes);
+  | Rehydrate(notes)
+  | RemoveNoteAndToHome(int);

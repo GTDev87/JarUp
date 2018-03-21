@@ -77,6 +77,7 @@ let make = (_children) => {
                       textAlign(Left)
                     ])
                   )
+                  adjustsFontSizeToFit=true
                 />
               </Row>
             </Grid>
