@@ -62,7 +62,7 @@ let make = (_children) => {
           <CardBorderLayout
             backColor="white"
             footerText="Goodvibes Everyday"
-            footerColor=Colors.redPrimaryString
+            footerColor="black"
           >
             <Grid>
               <Row size=1 />
