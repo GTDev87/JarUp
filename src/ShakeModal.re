@@ -10,11 +10,11 @@ let textStyle = (primaryColor) => Style.(style([
   color(String(Colors.colorToContrastColor(primaryColor))),
 ]));
 
-let choiceToIcon = (iconType) =>
+let choiceToIcon = (note : Control.note, iconType) =>
   switch (iconType) {
-  | PullCardState.Heart => <Entypo name="heart" size=iconFontSize color="black" />
-  | PullCardState.Smile => <SimpleLineIcons name="emotsmile" size=iconFontSize color="black" />
-  | PullCardState.Happy => <FontAwesome name="child" size=iconFontSize color="black" />
+  | PullCardState.Heart => <Entypo name="heart" size=iconFontSize color=Colors.colorToContrastColor(note.color) />
+  | PullCardState.Smile => <SimpleLineIcons name="emotsmile" size=iconFontSize color=Colors.colorToContrastColor(note.color) />
+  | PullCardState.Happy => <FontAwesome name="child" size=iconFontSize color=Colors.colorToContrastColor(note.color) />
   };
 
 let make = (~pullCardState : PullCardState.state, ~controlAction, _children) => {
@@ -34,7 +34,7 @@ let make = (~pullCardState : PullCardState.state, ~controlAction, _children) => 
           <Row size=4 />
           <Row size=2>
             <View>
-              { choiceToIcon(pullCardState.icon) }
+              { choiceToIcon(pullCardState.selectedNote, pullCardState.icon) }
             </View>
           </Row>
           <Row size=4>
