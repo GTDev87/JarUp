@@ -48,6 +48,7 @@ let make = (~addNoteAndGoHome, ~updateNoteFn, ~controlAction, _children) => {
             onChangeText=updateNoteFn
             onSubmitEditing=addNoteAndGoHome
             numberOfLines=3
+            multiline=true
           />
         </Row>
         <Row size=3>
