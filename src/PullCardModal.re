@@ -19,6 +19,7 @@ let make = (~addNoteAndGoHome, ~updateNoteFn, ~controlAction, ~scene, ~pullCardS
       animationOut="zoomOutUp"
       animationIn="zoomInDown"
       animationOutTiming=100.
+      backdropOpacity=0.
       backdropTransitionInTiming=800.
       backdropTransitionOutTiming=800.
       style=Style.(style([
