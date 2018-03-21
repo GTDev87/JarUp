@@ -74,7 +74,7 @@ let make = (_children) => {
                       fontWeight(`_500),
                       color(String("black")),
                       fontSize(Float(20.)),
-                      textAlign(Justify)
+                      textAlign(Left)
                     ])
                   )
                 />
