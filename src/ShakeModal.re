@@ -7,7 +7,7 @@ let iconFontSize = 80;
 let textStyle = (primaryColor) => Style.(style([
   fontFamily("Arial Rounded MT Bold"),
   fontSize(Float(40.)),
-  color(Colors.colorToContrastColor(primaryColor)),
+  color(String(Colors.colorToContrastColor(primaryColor))),
 ]));
 
 let choiceToIcon = (iconType) =>

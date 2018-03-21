@@ -16,7 +16,7 @@ let make = (~controlAction, ~openPullCardModal, _children) => {
             <HomeDisplayView openPullCardModal=openPullCardModal/>
           </Row>
           <Row size=2>
-            <HomeActionView controlAction=controlAction openPullCardModal=openPullCardModal/>
+            <HomeActionView controlAction=controlAction/>
           </Row>
         </Grid>
       </Container>

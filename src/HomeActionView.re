@@ -2,7 +2,7 @@ let component = ReasonReact.statelessComponent("ActionView");
 
 let marginBottomVal = 30.;
 
-let make = (~controlAction, ~openPullCardModal, _children) => {
+let make = (~controlAction, _children) => {
   ...component,
   render: (_self) =>
     <Grid>

@@ -11,7 +11,7 @@ let make = (~controlAction, /*~openPullCardModal, */_children) => {
     <TouchableOpacity
       style=Style.(style([
         flex(1.),
-        backgroundColor("white"),
+        backgroundColor(String("white")),
       ]))
       onPress=(() => controlAction(Control.(ChangeScene(Home))))
     >
@@ -19,10 +19,12 @@ let make = (~controlAction, /*~openPullCardModal, */_children) => {
         style=Style.(
           style([
             flex(1.),
-            maxWidth(Pct(100.)),
-            maxHeight(Pct(100.)),
+            justifyContent(Center),
+            alignItems(Center),
+            unsafeStyleElement("width", Js.Json.null),
+            unsafeStyleElement("height", Js.Json.null),
           ]))
-        resizeMode=`contain
+        resizeMode=`cover
         source=landingIcon
       />
     </TouchableOpacity>

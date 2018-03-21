@@ -72,7 +72,7 @@ let make = (_children) => {
                   style=Style.(
                     style([
                       fontWeight(`_500),
-                      color("black"),
+                      color(String("black")),
                       fontSize(Float(20.)),
                       textAlign(Justify)
                     ])
@@ -87,7 +87,7 @@ let make = (_children) => {
         style=Style.(
           style([
             flex(1.),
-            backgroundColor("transparent"),
+            backgroundColor(String("transparent")),
           ]))
       > 
         <Col size=1 />

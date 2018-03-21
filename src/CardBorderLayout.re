@@ -4,7 +4,7 @@ let marginLeftCardContent = 5.;
 
 let headerTextStyle = Style.(style([
   margin(Pct(3.)),
-  color("gray"),
+  color(String("gray")),
   textAlign(Left),
   textAlignVertical(Center),
   fontFamily("Arial Rounded MT Bold"),
@@ -52,15 +52,15 @@ let make = (~backColor, ~footerText, ~headerText=?, ~footerColor=?, children) =>
   render: (_self) =>
     <Card2
       style=Style.(style([
-        backgroundColor(backColor),
-        borderColor("black"),
+        backgroundColor(String(backColor)),
+        borderColor(String("black")),
         borderRadius(borderColorDepth),
         flex(1.),
       ]))
     >
       <Grid
         style=Style.(style([
-          borderColor("black"),
+          borderColor(String("black")),
           borderWidth(borderColorDepth),
           borderRadius(borderColorDepth),
         ]))
@@ -81,7 +81,7 @@ let make = (~backColor, ~footerText, ~headerText=?, ~footerColor=?, children) =>
             value=footerText
             style=Style.(style([
               margin(Pct(3.)),
-              color(getFooterColor(footerColor)),
+              color(String(getFooterColor(footerColor))),
               textAlign(Left),
               textAlignVertical(Center),
               flex(1.),
