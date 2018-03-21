@@ -1,6 +1,7 @@
 let redPrimaryString = "rgb(247, 159, 72)";
 let orangePrimaryString = "rgb(246, 233, 104)";
 let yellowPrimaryString = "rgb(255, 255, 255)";
+let blackPrimaryColor = "rgb(0, 0, 0)";
 
 /*
 colors in the jar are not actual colors
@@ -12,6 +13,13 @@ let colorToActualColor(color) =
   | Control.Red => redPrimaryString
   | Control.Orange => orangePrimaryString
   | Control.Yellow => yellowPrimaryString
+};
+
+let colorToContrastColor(color) =
+  switch(color) {
+  | Control.Red => orangePrimaryString
+  | Control.Orange => blackPrimaryColor
+  | Control.Yellow => redPrimaryString
 };
 
 let colorToString(color) =

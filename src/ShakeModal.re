@@ -4,9 +4,10 @@ let component = ReasonReact.statelessComponent("ShakeModal");
 
 let iconFontSize = 80;
 
-let textStyle = Style.(style([
+let textStyle = (primaryColor) => Style.(style([
   fontFamily("Arial Rounded MT Bold"),
   fontSize(Float(40.)),
+  color(Colors.colorToContrastColor(primaryColor)),
 ]));
 
 let choiceToIcon = (iconType) =>
@@ -37,7 +38,10 @@ let make = (~pullCardState : PullCardState.state, ~controlAction, _children) => 
             </View>
           </Row>
           <Row size=4>
-            <Text style=textStyle value=pullCardState.selectedNote.text />
+            <Text
+              style=textStyle(pullCardState.selectedNote.color)
+              value=pullCardState.selectedNote.text
+            />
           </Row>
         </Grid>
       </CardBorderLayout>
