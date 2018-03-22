@@ -7,7 +7,7 @@ let component = ReasonReact.reducerComponent("ControlView");
 
 let textToNote = (text, id) => {
   let color = Utils.selectRandomFromList(Control.papercolors, Control.Red);
-  let time = Js.Date.now() |> int_of_float;
+  let time = Moment.(moment(None) |> Moment.valueOf());
   { id, text, color, time};
 };
 
