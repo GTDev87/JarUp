@@ -53,6 +53,7 @@ let make = (~addNoteAndGoHome, ~updateNoteFn, ~controlAction, _children) => {
               onSubmitEditing=addNoteAndGoHome
               numberOfLines=3
               multiline=true
+              blurOnSubmit=true
               placeholder="What is your moment?"
             />
           </Row>
