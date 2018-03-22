@@ -5,7 +5,7 @@ let component = ReasonReact.statelessComponent("ShakeModal");
 let iconFontSize = 80;
 
 let bigSize = 40.;
-let smallSize = 12.;
+let smallSize = 16.;
 
 let textStyle = (primaryColor, size) => Style.(style([
   fontFamily("Arial Rounded MT Bold"),
@@ -19,7 +19,7 @@ let dateStyle = (primaryColor, size) => Style.(style([
   color(String(Colors.colorToContrastColor(primaryColor))),
   alignSelf(FlexEnd),
   marginBottom(Pct(20.)),
-  marginRight(Pct(10.)),
+  marginRight(Pct(8.)),
   flexDirection(Row),
 ]));
 
@@ -77,7 +77,11 @@ let make = (~pullCardState : PullCardState.state, ~controlAction, _children) => 
                 ]))>
                   <Text
                     style=dateStyle(pullCardState.selectedNote.color, smallSize)
-                    value=(pullCardState.selectedNote.time |> float_of_int |> Js.Date.fromFloat |> Js.Date.toDateString)
+                    value=Moment.(
+                      Some(pullCardState.selectedNote.time |> float_of_int) 
+                      |> moment(_)
+                      |> Moment.format("MM/DD/YY")
+                    )
                   />
                 </View>
               </Col>
