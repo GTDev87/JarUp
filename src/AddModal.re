@@ -50,11 +50,11 @@ let make = (~addNoteAndGoHome, ~updateNoteFn, ~controlAction, _children) => {
             <TextInput
               style=inputTextStyle
               onChangeText=updateNoteFn
-              onSubmitEditing=addNoteAndGoHome
+              onSubmitEditing=(addNoteAndGoHome)
               numberOfLines=3
               multiline=true
               blurOnSubmit=true
-              placeholder="What is your moment?"
+              placeholder="Insert moment here"
             />
           </Row>
           <Row size=2>

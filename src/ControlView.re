@@ -34,7 +34,10 @@ let make = (_children) => {
   reducer: (action, state: Control.state) =>
     switch action {
     | Rehydrate(notes) => ReasonReact.Update({...state, notes})
-    | AddNoteAndToHome(text) => ReasonReact.Update(addNoteToState(state, text))
+    | AddNoteAndToHome(text) =>
+        text === "" ?
+          ReasonReact.Update({...state, scene: Control.Home}) :
+          ReasonReact.Update(addNoteToState(state, text))
     | RemoveNoteAndToHome(id) => ReasonReact.Update(removeNoteToState(state, id))
     | ChangeScene(scene) => ReasonReact.Update {...state, scene}
     },
