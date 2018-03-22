@@ -4,12 +4,12 @@ open Control;
 let storageKey = "Illume.state";
 
 
-let jsonifyNote = ({id, text, color}) =>
+let jsonifyNote = ({id, text, color, time}) =>
   Js.Dict.fromList([
     ("id", id |> float_of_int |> Js.Json.number),
     ("text",  Js.Json.string(text)),
     ("color", (color |> Colors.colorToString |> Js.Json.string)),
-    ("time", id |> float_of_int |> Js.Json.number),
+    ("time", time |> float_of_int |> Js.Json.number),
   ]);
 
 let decodeNote = (json) => {

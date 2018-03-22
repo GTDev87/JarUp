@@ -4,10 +4,23 @@ let component = ReasonReact.statelessComponent("ShakeModal");
 
 let iconFontSize = 80;
 
-let textStyle = (primaryColor) => Style.(style([
+let bigSize = 40.;
+let smallSize = 12.;
+
+let textStyle = (primaryColor, size) => Style.(style([
   fontFamily("Arial Rounded MT Bold"),
-  fontSize(Float(40.)),
+  fontSize(Float(size)),
   color(String(Colors.colorToContrastColor(primaryColor))),
+]));
+
+let dateStyle = (primaryColor, size) => Style.(style([
+  fontFamily("Arial Rounded MT Bold"),
+  fontSize(Float(size)),
+  color(String(Colors.colorToContrastColor(primaryColor))),
+  alignSelf(FlexEnd),
+  marginBottom(Pct(20.)),
+  marginRight(Pct(10.)),
+  flexDirection(Row),
 ]));
 
 let choiceToIcon = (note : Control.note, iconType) =>
@@ -51,13 +64,27 @@ let make = (~pullCardState : PullCardState.state, ~controlAction, _children) => 
           <Grid>
             <Row size=4 />
             <Row size=2>
-              <View>
+              <Col size=2>
                 { choiceToIcon(pullCardState.selectedNote, pullCardState.icon) }
-              </View>
+              </Col>
+              <Col size=1 />
+              <Col size=2>
+                <View style=Style.(style([
+                  flex(1.),
+                  flexDirection(Row),
+                  alignItems(FlexEnd),
+                  justifyContent(FlexEnd),
+                ]))>
+                  <Text
+                    style=dateStyle(pullCardState.selectedNote.color, smallSize)
+                    value=(pullCardState.selectedNote.time |> float_of_int |> Js.Date.fromFloat |> Js.Date.toDateString)
+                  />
+                </View>
+              </Col>
             </Row>
             <Row size=4>
               <Text
-                style=textStyle(pullCardState.selectedNote.color)
+                style=textStyle(pullCardState.selectedNote.color, bigSize)
                 value=pullCardState.selectedNote.text
               />
             </Row>
