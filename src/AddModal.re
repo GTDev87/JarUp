@@ -39,7 +39,6 @@ let make = (~addNoteAndGoHome, ~updateNoteFn, ~controlAction, _children) => {
                     style=questionStyle
                     value="What awesome thing happened to you today?"
                     numberOfLines=3
-                    minimumFontScale=0.5
                     allowFontScaling=true
                     adjustsFontSizeToFit=true
                   />
