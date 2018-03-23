@@ -61,12 +61,12 @@ let make = (_children) => {
         >
           <CardBorderLayout
             backColor="white"
-            footerText="Goodvibes Everyday"
+            footerText="Goodvibes everyday"
             footerColor="black"
           >
             <Grid>
-              <Row size=1 />
-              <Row size=8>
+              <Row size=2 />
+              <Row size=6>
                 <Text
                   value=faqTextPart
                   style=Style.(
@@ -74,12 +74,15 @@ let make = (_children) => {
                       fontWeight(`_500),
                       color(String("black")),
                       fontSize(Float(20.)),
-                      textAlign(Left)
+                      textAlign(Left),
+                      textAlignVertical(Top),
+                      borderWidth(2.),
                     ])
                   )
                   adjustsFontSizeToFit=true
                 />
               </Row>
+              <Row size=1 />
             </Grid>
           </CardBorderLayout>
         </TouchableOpacity>

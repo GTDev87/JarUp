@@ -59,7 +59,7 @@ let make = (~pullCardState : PullCardState.state, ~controlAction, _children) => 
       <View style=Style.(style([flex(1.),]))>
         <CardBorderLayout
           backColor=(pullCardState.selectedNote.color |> Colors.colorToActualColor)
-          footerText="Goodvibes Everyday"
+          footerText="Goodvibes everyday"
         >
           <Grid>
             <Row size=4 />

@@ -23,7 +23,7 @@ let make = (~addNoteAndGoHome, ~updateNoteFn, ~controlAction, _children) => {
     >
       <CardBorderLayout
         backColor="white"
-        footerText="Goodvibes Everyday"
+        footerText="Goodvibes everyday"
       >
         <Grid>
           <Row size=5>
