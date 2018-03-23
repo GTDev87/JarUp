@@ -76,7 +76,6 @@ let make = (_children) => {
                       fontSize(Float(20.)),
                       textAlign(Left),
                       textAlignVertical(Top),
-                      borderWidth(2.),
                     ])
                   )
                   adjustsFontSizeToFit=true
