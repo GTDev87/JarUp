@@ -38,6 +38,7 @@ let make = (~addNoteAndGoHome, ~updateNoteFn, ~controlAction, _children) => {
                   <Text
                     style=questionStyle
                     value="What awesome thing happened to you today?"
+                    numberOfLines=3
                     allowFontScaling=true
                     adjustsFontSizeToFit=true
                   />
@@ -50,6 +51,7 @@ let make = (~addNoteAndGoHome, ~updateNoteFn, ~controlAction, _children) => {
               style=inputTextStyle
               onChangeText=updateNoteFn
               onSubmitEditing=(addNoteAndGoHome)
+              numberOfLines=3
               multiline=true
               blurOnSubmit=true
               placeholder="Insert moment here"
