@@ -4,7 +4,7 @@ let component = ReasonReact.statelessComponent("ShakeModal");
 
 let iconFontSize = 80;
 
-let bigSize = 40.;
+let bigSize = 30.;
 let smallSize = 16.;
 
 let textStyle = (primaryColor, size) => Style.(style([

@@ -5,7 +5,7 @@ let component = ReasonReact.statelessComponent("AddModal");
 let questionStyle = Style.(style([
   fontFamily("Arial Rounded MT Bold"),
   flex(1.),
-  fontSize(Float(40.)),
+  fontSize(Float(30.)),
 ]));
 
 let inputTextStyle = Style.(style([
