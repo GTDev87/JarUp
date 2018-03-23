@@ -3,15 +3,15 @@ open BsReactNative;
 let component = ReasonReact.statelessComponent("PullCardModal");
 
 let isNotHome = (scene) => scene !== Control.Home;
-let pickScene = (scene, controlAction, pullCardState, updateNoteFn, addNoteAndGoHome) =>
+let pickScene = (scene, controlAction, pullCardState, updateNoteFn, addNoteAndGoHome, text) =>
   switch(scene) {
   | Control.Shake => <ShakeModal controlAction=controlAction pullCardState=pullCardState />
-  | Control.Add => <AddModal updateNoteFn=updateNoteFn controlAction=controlAction addNoteAndGoHome=addNoteAndGoHome/>
+  | Control.Add => <AddModal updateNoteFn=updateNoteFn controlAction=controlAction addNoteAndGoHome=addNoteAndGoHome text=text/>
   | Control.Home => <View />
   | Control.Landing => <LandingModal controlAction=controlAction/>
   };
 
-let make = (~addNoteAndGoHome, ~updateNoteFn, ~controlAction, ~scene, ~pullCardState : PullCardState.state, _children) => {
+let make = (~addNoteAndGoHome, ~updateNoteFn, ~controlAction, ~scene, ~pullCardState : PullCardState.state, ~text : string, _children) => {
   ...component, 
   render: (_self) =>
     <Modal2
@@ -28,6 +28,6 @@ let make = (~addNoteAndGoHome, ~updateNoteFn, ~controlAction, ~scene, ~pullCardS
         marginTop(Pt(Dimension.cardTop)),
       ]))
     >
-      { pickScene(scene, controlAction, pullCardState, updateNoteFn, addNoteAndGoHome) }
+      { pickScene(scene, controlAction, pullCardState, updateNoteFn, addNoteAndGoHome, text) }
     </Modal2>
 };

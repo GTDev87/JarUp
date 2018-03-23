@@ -14,7 +14,7 @@ let inputTextStyle = Style.(style([
   flex(1.),
 ]));
 
-let make = (~addNoteAndGoHome, ~updateNoteFn, ~controlAction, _children) => {
+let make = (~addNoteAndGoHome, ~updateNoteFn, ~controlAction, ~text, _children) => {
   ...component,
   render: (_self) =>
     <KeyboardAvoidingView
@@ -55,6 +55,7 @@ let make = (~addNoteAndGoHome, ~updateNoteFn, ~controlAction, _children) => {
               multiline=true
               blurOnSubmit=true
               placeholder="Insert moment here"
+              value=text
             />
           </Row>
           <Row size=2>

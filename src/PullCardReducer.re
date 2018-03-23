@@ -17,6 +17,8 @@ let component = ReasonReact.reducerComponent("PullCardReducer");
 
 let isShakeScene = (scene) => scene == Control.Shake;
 
+let characterLimit = 60;
+
 let make = (~controlAction, ~scene, ~notes, _children) => {
   ...component, 
   initialState: () : PullCardState.state => (
@@ -33,7 +35,10 @@ let make = (~controlAction, ~scene, ~notes, _children) => {
         {...state, selectedNote: selectRandomNote(notes), icon: chooseRandomIcon()},
         (_self => controlAction(Control.(ChangeScene(Shake))))
       ) /* investigate this */
-    | PullCardState.UpdateNote(noteText) => ReasonReact.Update({...state, noteText})
+    | PullCardState.UpdateNote(noteText) =>
+      String.length(noteText) < characterLimit ?
+          ReasonReact.Update({...state, noteText}) :
+          ReasonReact.NoUpdate
     | PullCardState.NoAction => ReasonReact.NoUpdate
     },
   render: (self) =>
@@ -44,6 +49,7 @@ let make = (~controlAction, ~scene, ~notes, _children) => {
         pullCardState=self.state
         addNoteAndGoHome=((_event) => controlAction(Control.AddNoteAndToHome(self.state.PullCardState.noteText)))
         updateNoteFn=((text) => self.send(PullCardState.UpdateNote(text)))
+        text=self.state.noteText
       />
       <HomeView
         controlAction=controlAction
