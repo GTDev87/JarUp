@@ -15,7 +15,7 @@ type action =
   | Open
   | Close;
 
-let faqTextPart = "illume stores moments that make you smile and reminds you of them when you are feeling down. By pressing the pencil a notebox will appear. Write down a moment and save it. Illume stores your notes as memories in the jar for safe keeping. To view your stored memories press on the jar and a random memory will pop up. You can view several memories by pressing the jar several times.";
+let faqTextPart = "illume stores your happy moments and reminds you of them when you are feeling down. By pressing the pen tool a note box will appear. Write down a happy moment and then save it. It can be as simple as a kind gesture from a stranger to a big milestone that fills you with a sense of satisfaction. illume stores your notes as memories in the jar for safe keeping. To view your stored memories press on the jar and a random memory will pop up. You can view several memories by pressing the jar several times. You can also erase a memory by holding down the card and then pressing on the delete option.";
 
 type state = {modalOpen: bool};
 
