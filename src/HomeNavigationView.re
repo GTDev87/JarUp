@@ -109,7 +109,16 @@ let make = (_children) => {
             >
               <Col />
               <Col size=3>
-                <IllumeImage />
+                <Grid>
+                  <Col size=4>
+                    <IllumeImage />
+                  </Col>
+                  <Col size=1>
+                    <View style=Style.(style([flex(1.), justifyContent(FlexEnd)]))>
+                      <Entypo name="chevron-down" size=16 color="Black" style=Style.(style([alignSelf(Center),])) />
+                    </View>
+                  </Col>
+                </Grid>
               </Col>
               <Col />
             </Grid>
