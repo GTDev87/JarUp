@@ -10,7 +10,7 @@ let questionStyle = Style.(style([
 
 let inputTextStyle = Style.(style([
   fontFamily("Arial"),
-  fontSize(Float(28.)),
+  fontSize(Float(22.)),
   flex(1.),
 ]));
 
