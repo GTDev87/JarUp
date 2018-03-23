@@ -13,7 +13,7 @@ let make = (~controlAction, _children) => {
       ]))
     >
       <TouchableOpacity onPress=((_event) => controlAction(Control.(ChangeScene(Add))))>
-        <Foundation name="pencil" size=30 color="gray" />
+        <Foundation name="pencil" size=30 color="rgb(43, 38, 39)" />
       </TouchableOpacity>
     </View>
 };
