@@ -60,6 +60,7 @@ let make = (~pullCardState : PullCardState.state, ~controlAction, _children) => 
         <CardBorderLayout
           backColor=(pullCardState.selectedNote.color |> Colors.colorToActualColor)
           footerText="Goodvibes everyday"
+          footerColor="black"
         >
           <Grid>
             <Row size=4 />

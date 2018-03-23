@@ -24,6 +24,15 @@ let jarIcon6 : Image.imageSource = Image.Required(image6);
 let image7 : Packager.required = Packager.require("../../../assets/icons/jar/jar_7.png");
 let jarIcon7 : Image.imageSource = Image.Required(image7);
 
+let image8 : Packager.required = Packager.require("../../../assets/icons/jar/jar_8.png");
+let jarIcon8 : Image.imageSource = Image.Required(image8);
+
+let image9 : Packager.required = Packager.require("../../../assets/icons/jar/jar_9.png");
+let jarIcon9 : Image.imageSource = Image.Required(image9);
+
+let image10 : Packager.required = Packager.require("../../../assets/icons/jar/jar_10.png");
+let jarIcon10 : Image.imageSource = Image.Required(image10);
+
 let imageHalf : Packager.required = Packager.require("../../../assets/icons/jar/jar_half.png");
 let jarIconHalf : Image.imageSource = Image.Required(imageHalf);
 
@@ -57,7 +66,10 @@ let iconFromNumberNotes = (numberOfNotes) =>
   | 5 => jarIcon5
   | 6 => jarIcon6
   | 7 => jarIcon7
-  | (8|9|10|11|12|13|14|15) => jarIconHalf
+  | 8 => jarIcon8
+  | 9 => jarIcon9
+  | 10 => jarIcon10
+  | (11|12|13|14|15) => jarIconHalf
   | _ => jarIconFull
   };
 
