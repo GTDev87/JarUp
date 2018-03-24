@@ -7,6 +7,13 @@
     "icon": "./assets/icons/logo.png",
     "loading": {
       "hideExponentText": true,
+    },
+    "ios": {
+      "bundleIdentifier": "com.illume.illume"
+    },
+    "android": {
+      "package": "com.illume.illume",
+      "permissions": []
     }
   }
 }
