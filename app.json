@@ -3,7 +3,7 @@
     "sdkVersion": "25.0.0",
     "name": "Illume",
     "description": "Uppers for your mood.",
-    "version": "0.0.4",
+    "version": "0.0.5",
     "loading": {
       "hideExponentText": true,
     },
