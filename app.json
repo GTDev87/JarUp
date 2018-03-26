@@ -4,17 +4,18 @@
     "name": "Illume",
     "description": "Uppers for your mood.",
     "version": "0.0.4",
-    "icon": "./assets/icons/logo.png",
     "loading": {
       "hideExponentText": true,
     },
     "ios": {
       "bundleIdentifier": "com.illume.illume",
-      "supportsTablet": false
+      "supportsTablet": false,
+      "icon": "./assets/icons/ios_logo.png"
     },
     "android": {
       "package": "com.illume.illume",
       "versionCode": 2,
+      "icon": "./assets/icons/android_logo_big.png",
       "permissions": []
     }
   }
