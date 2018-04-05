@@ -30,7 +30,7 @@ let make = (~addNoteAndGoHome, ~updateNoteFn, ~controlAction, ~text, _children) 
           <Row size=5>
             <TouchableOpacity
               style=Style.(style([flex(1.)]))
-              onPress=((_event) => controlAction(Control.Model.(ChangeScene(Home))))
+              onPress=((_event) => controlAction(Control.Action.(ChangeScene(Home))))
             >
               <Grid>
                 <Row size=2 />

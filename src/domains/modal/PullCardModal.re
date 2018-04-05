@@ -4,10 +4,21 @@ let component = ReasonReact.statelessComponent("PullCardModal");
 
 let isNotHome = (scene) => scene !== Control.Model.Home;
 
-let pickScene = (scene, controlAction, pullCardState, updateNoteFn, addNoteAndGoHome, text) =>
+let pickScene = (scene, controlAction, updateNoteFn, addNoteAndGoHome, noteText, selectedNote, icon) =>
   switch(scene) {
-  | Control.Model.Shake => <ShakeModal controlAction=controlAction pullCardState=pullCardState />
-  | Control.Model.Add => <AddModal updateNoteFn=updateNoteFn controlAction=controlAction addNoteAndGoHome=addNoteAndGoHome text=text/>
+  | Control.Model.Shake =>
+      <ShakeModal
+        controlAction=controlAction
+        selectedNote=selectedNote
+        icon=icon
+      />
+  | Control.Model.Add =>
+      <AddModal
+        updateNoteFn=updateNoteFn
+        controlAction=controlAction
+        addNoteAndGoHome=addNoteAndGoHome
+        text=noteText
+      />
   | Control.Model.Home => <View />
   | Control.Model.Landing => <LandingModal controlAction=controlAction/>
   | Control.Model.Faq => <FaqModal controlAction=controlAction/>
@@ -18,8 +29,9 @@ let make = (
   ~updateNoteFn,
   ~controlAction,
   ~scene,
-  ~pullCardState : PullCardState.state,
-  ~text : string,
+  ~noteText : string,
+  ~selectedNote : Control.Model.note,
+  ~icon : Control.Model.icon,
   _children
 ) => {
   ...component, 
@@ -38,6 +50,6 @@ let make = (
         marginTop(Pt(Dimension.cardTop)),
       ]))
     >
-      { pickScene(scene, controlAction, pullCardState, updateNoteFn, addNoteAndGoHome, text) }
+      { pickScene(scene, controlAction, updateNoteFn, addNoteAndGoHome, noteText, selectedNote, icon) }
     </Modal2>
 };

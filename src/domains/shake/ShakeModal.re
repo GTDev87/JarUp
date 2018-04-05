@@ -25,12 +25,17 @@ let dateStyle = (primaryColor, size) => Style.(style([
 
 let choiceToIcon = (note : Control.Model.note, iconType) =>
   switch (iconType) {
-  | PullCardState.Heart => <Entypo name="heart" size=iconFontSize color=Colors.colorToContrastColor(note.color) />
-  | PullCardState.Smile => <SimpleLineIcons name="emotsmile" size=iconFontSize color=Colors.colorToContrastColor(note.color) />
-  | PullCardState.Happy => <FontAwesome name="child" size=iconFontSize color=Colors.colorToContrastColor(note.color) />
+  | Control.Model.Heart => <Entypo name="heart" size=iconFontSize color=Colors.colorToContrastColor(note.color) />
+  | Control.Model.Smile => <SimpleLineIcons name="emotsmile" size=iconFontSize color=Colors.colorToContrastColor(note.color) />
+  | Control.Model.Happy => <FontAwesome name="child" size=iconFontSize color=Colors.colorToContrastColor(note.color) />
   };
 
-let make = (~pullCardState : PullCardState.state, ~controlAction, _children) => {
+let make = (
+  ~selectedNote : Control.Model.note,
+  ~icon : Control.Model.icon,
+  ~controlAction,
+  _children
+) => {
   ...component,
   render: (_self) =>
     <TouchableWithoutFeedback
@@ -44,7 +49,7 @@ let make = (~pullCardState : PullCardState.state, ~controlAction, _children) => 
           ~buttons=[
             {
               text: Some("Ok"),
-              onPress: Some(() => controlAction(Control.Model.RemoveNoteAndToHome(pullCardState.selectedNote.id))),
+              onPress: Some(() => controlAction(Control.Action.RemoveNoteAndToHome(selectedNote.id))),
               style: Some(`default),
             },
             {
@@ -58,7 +63,7 @@ let make = (~pullCardState : PullCardState.state, ~controlAction, _children) => 
     >
       <View style=Style.(style([flex(1.),]))>
         <CardBorderLayout
-          backColor=(pullCardState.selectedNote.color |> Colors.colorToActualColor)
+          backColor=(selectedNote.color |> Colors.colorToActualColor)
           footerText="Goodvibes everyday"
           footerColor="black"
         >
@@ -66,7 +71,7 @@ let make = (~pullCardState : PullCardState.state, ~controlAction, _children) => 
             <Row size=4 />
             <Row size=2>
               <Col size=2>
-                { choiceToIcon(pullCardState.selectedNote, pullCardState.icon) }
+                { choiceToIcon(selectedNote, icon) }
               </Col>
               <Col size=1 />
               <Col size=2>
@@ -77,9 +82,9 @@ let make = (~pullCardState : PullCardState.state, ~controlAction, _children) => 
                   justifyContent(FlexEnd),
                 ]))>
                   <Text
-                    style=dateStyle(pullCardState.selectedNote.color, smallSize)
+                    style=dateStyle(selectedNote.color, smallSize)
                     value=Moment.(
-                      Some(pullCardState.selectedNote.time |> float_of_int) 
+                      Some(selectedNote.time |> float_of_int) 
                       |> moment(_)
                       |> Moment.format("MM/DD/YY")
                     )
@@ -89,8 +94,8 @@ let make = (~pullCardState : PullCardState.state, ~controlAction, _children) => 
             </Row>
             <Row size=4>
               <Text
-                style=textStyle(pullCardState.selectedNote.color, bigSize)
-                value=pullCardState.selectedNote.text
+                style=textStyle(selectedNote.color, bigSize)
+                value=selectedNote.text
               />
             </Row>
           </Grid>

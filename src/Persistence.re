@@ -57,7 +57,7 @@ let rehydrate = (self) => {
                 /* parse JSON, decode it into a ReasonML Record, and reset the state */
                 let parsedJson = Js.Json.parseExn(s);
                 let hydratedNotes = parsedJson |> Json.Decode.list(decodeNote);
-                self.ReasonReact.reduce(() => Rehydrate(hydratedNotes), ());
+                self.ReasonReact.reduce(() => Control.Action.Rehydrate(hydratedNotes), ());
                 ()
              }
            )

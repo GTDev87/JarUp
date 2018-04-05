@@ -13,7 +13,7 @@ let make = (~controlAction, /*~openPullCardModal, */_children) => {
         flex(1.),
         backgroundColor(String("white")),
       ]))
-      onPress=(() => controlAction(Control.Model.(ChangeScene(Home))))
+      onPress=(() => controlAction(Control.Action.(ChangeScene(Home))))
     >
       <Image
         style=Style.(

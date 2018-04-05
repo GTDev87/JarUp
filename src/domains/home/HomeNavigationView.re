@@ -24,7 +24,7 @@ let make = (~controlAction, _children) => {
         <Col size=3>
           <TouchableOpacity
             style=Style.(style([flex(1.),]))
-            onPress=((_) => controlAction(Control.Model.(ChangeScene(Faq))))
+            onPress=((_) => controlAction(Control.Action.(ChangeScene(Faq))))
           >
              <Grid
               style=Style.(

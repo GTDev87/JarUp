@@ -15,7 +15,7 @@ let make = (~controlAction, _children) => {
       style=Style.(style([
         flex(1.),
       ]))
-      onPress=(() => controlAction(Control.Model.(ChangeScene(Home))))
+      onPress=(() => controlAction(Control.Action.(ChangeScene(Home))))
     >
       <CardBorderLayout
         backColor="white"
