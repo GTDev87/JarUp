@@ -13,16 +13,23 @@ let textToNote = (text, id) : Control_Model.note => {
   { id, text, color, time};
 };
 
+let max = (list) => Belt.List.reduce(list, 0, (x, y) => (x > y ? x : y));
+
+let addOne = (a) => a + 1;
+
 let addNoteToState = (state : Control_Model.state, text) => {
-  let highestNoteId =
+  let note =
     state.notes
     |> Belt.List.map(_, (note) => note.id)
-    |> Belt.List.reduce(_, 0, (x, y) =>(x > y ? x : y));
-  let note = textToNote(text, highestNoteId + 1);
+    |> max
+    |> addOne
+    |> textToNote(text, _);
+
   {
     ...state,
+    noteText: "",
     notes: [note, ...state.notes],
-    scene: Control_Model.Home
+    scene: Control_Model.Home,
   };
 };
 
