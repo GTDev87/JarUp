@@ -4,7 +4,7 @@ type icon =
   | Happy;
 
 type state = {
-  selectedNote: Control.note,
+  selectedNote: Control.Model.note,
   icon,
   noteText: string
 };

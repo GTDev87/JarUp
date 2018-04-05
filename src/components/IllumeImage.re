@@ -1,6 +1,6 @@
 open BsReactNative;
 
-let orangeIllumeImage : Packager.required = Packager.require("../../../assets/icons/illume_type_y_o.png");
+let orangeIllumeImage : Packager.required = Packager.require("../../../../assets/icons/illume_type_y_o.png");
 let orangeIllumeIcon : Image.imageSource = Image.Required(orangeIllumeImage);
 
 let component = ReasonReact.statelessComponent("IllumeImage");

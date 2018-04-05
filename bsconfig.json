@@ -8,7 +8,7 @@
   "sources": [
     {
       "dir": "src",
-      "subdirs": ["types"]
+      "subdirs": true
     }
   ],
   "refmt": 3

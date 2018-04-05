@@ -12,7 +12,7 @@ let make = (~controlAction, _children) => {
         alignItems(Center),
       ]))
     >
-      <TouchableOpacity onPress=((_event) => controlAction(Control.(ChangeScene(Add))))>
+      <TouchableOpacity onPress=((_event) => controlAction(Control.Model.(ChangeScene(Add))))>
         <Foundation name="pencil" size=30 color="rgb(43, 38, 39)" />
       </TouchableOpacity>
     </View>

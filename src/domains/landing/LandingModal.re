@@ -2,7 +2,7 @@ open BsReactNative;
 
 let component = ReasonReact.statelessComponent("LandingModal");
 
-let image : Packager.required = Packager.require("../../../assets/icons/landing_big.png");
+let image : Packager.required = Packager.require("../../../../../assets/icons/landing_big.png");
 let landingIcon : Image.imageSource = Image.Required(image);
 
 let make = (~controlAction, /*~openPullCardModal, */_children) => {
@@ -13,7 +13,7 @@ let make = (~controlAction, /*~openPullCardModal, */_children) => {
         flex(1.),
         backgroundColor(String("white")),
       ]))
-      onPress=(() => controlAction(Control.(ChangeScene(Home))))
+      onPress=(() => controlAction(Control.Model.(ChangeScene(Home))))
     >
       <Image
         style=Style.(

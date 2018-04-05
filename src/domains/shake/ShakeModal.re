@@ -23,7 +23,7 @@ let dateStyle = (primaryColor, size) => Style.(style([
   flexDirection(Row),
 ]));
 
-let choiceToIcon = (note : Control.note, iconType) =>
+let choiceToIcon = (note : Control.Model.note, iconType) =>
   switch (iconType) {
   | PullCardState.Heart => <Entypo name="heart" size=iconFontSize color=Colors.colorToContrastColor(note.color) />
   | PullCardState.Smile => <SimpleLineIcons name="emotsmile" size=iconFontSize color=Colors.colorToContrastColor(note.color) />
@@ -35,7 +35,7 @@ let make = (~pullCardState : PullCardState.state, ~controlAction, _children) => 
   render: (_self) =>
     <TouchableWithoutFeedback
       style=Style.(style([flex(1.),]))
-      onPress=(() => controlAction(Control.(ChangeScene(Home))))
+      onPress=(() => controlAction(Control.Model.(ChangeScene(Home))))
       onLongPress=(() =>
         Alert.(alert(
           ~title="Delete",
@@ -44,7 +44,7 @@ let make = (~pullCardState : PullCardState.state, ~controlAction, _children) => 
           ~buttons=[
             {
               text: Some("Ok"),
-              onPress: Some(() => controlAction(Control.RemoveNoteAndToHome(pullCardState.selectedNote.id))),
+              onPress: Some(() => controlAction(Control.Model.RemoveNoteAndToHome(pullCardState.selectedNote.id))),
               style: Some(`default),
             },
             {

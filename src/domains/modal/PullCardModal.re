@@ -2,13 +2,13 @@ open BsReactNative;
 
 let component = ReasonReact.statelessComponent("PullCardModal");
 
-let isNotHome = (scene) => scene !== Control.Home;
+let isNotHome = (scene) => scene !== Control.Model.Home;
 let pickScene = (scene, controlAction, pullCardState, updateNoteFn, addNoteAndGoHome, text) =>
   switch(scene) {
-  | Control.Shake => <ShakeModal controlAction=controlAction pullCardState=pullCardState />
-  | Control.Add => <AddModal updateNoteFn=updateNoteFn controlAction=controlAction addNoteAndGoHome=addNoteAndGoHome text=text/>
-  | Control.Home => <View />
-  | Control.Landing => <LandingModal controlAction=controlAction/>
+  | Control.Model.Shake => <ShakeModal controlAction=controlAction pullCardState=pullCardState />
+  | Control.Model.Add => <AddModal updateNoteFn=updateNoteFn controlAction=controlAction addNoteAndGoHome=addNoteAndGoHome text=text/>
+  | Control.Model.Home => <View />
+  | Control.Model.Landing => <LandingModal controlAction=controlAction/>
   };
 
 let make = (~addNoteAndGoHome, ~updateNoteFn, ~controlAction, ~scene, ~pullCardState : PullCardState.state, ~text : string, _children) => {

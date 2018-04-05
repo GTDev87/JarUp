@@ -1,5 +1,5 @@
 open BsReactNative;
-open Control;
+open Control.Model;
 
 let storageKey = "Illume.state";
 

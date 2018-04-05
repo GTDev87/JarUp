@@ -19,35 +19,13 @@ let childrenContentStyle = Style.(style([
 
 let component = ReasonReact.statelessComponent("CardBorderLayout");
 
-let ifNullEmptyString = (headerText) =>
-  switch(headerText) {
-  | None => ""
-  | Some(text) => text
-  };
-
-let generateHeader = (headerText) =>
-  switch(headerText) {
-  | None => <View />
-  | Some(_) =>
-      <Row size=1>
-        <Text
-          value=(ifNullEmptyString(headerText))
-          style=headerTextStyle
-          numberOfLines=1
-          minimumFontScale=0.5
-          allowFontScaling=true
-          adjustsFontSizeToFit=true
-        />
-      </Row>
-  };
-
 let getFooterColor = (footerColor) =>
   switch(footerColor) {
   | None => "gray"
   | Some(color) => color
   };
 
-let make = (~backColor, ~footerText, ~headerText=?, ~footerColor=?, children) => {
+let make = (~backColor, ~footerText, ~footerColor=?, children) => {
   ...component, 
   render: (_self) =>
     <Card2
