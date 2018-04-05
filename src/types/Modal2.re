@@ -3,7 +3,6 @@ external modal : ReasonReact.reactClass = "default";
 
 let make = (
   ~isVisible,
-  ~onBackdropPress=?,
   ~animationOutTiming=?,
   ~backdropTransitionInTiming=?,
   ~backdropTransitionOutTiming=?,
@@ -17,10 +16,9 @@ let make = (
     ~reactClass=modal,
     ~props={
       "style": Js.Nullable.fromOption(style),
-      "isVisible": isVisible,
+      "isVisible": Js.Boolean.to_js_boolean(isVisible),
       "backdropColor": Js.Nullable.fromOption(backdropColor),
       "backdropOpacity": Js.Nullable.fromOption(backdropOpacity),
-      "onBackdropPress": onBackdropPress,
       "animationIn": Js.Nullable.fromOption(animationIn),
       "animationOut": Js.Nullable.fromOption(animationOut),
       "animationOutTiming": Js.Nullable.fromOption(animationOutTiming),

@@ -10,7 +10,7 @@ let make = (~controlAction, ~openPullCardModal, ~notes, _children) => {
       <Container>
         <Grid>
           <Row size=1>
-            <HomeNavigationView />
+            <HomeNavigationView controlAction=controlAction/>
           </Row>
           <Row size=9>
             <HomeDisplayView openPullCardModal=openPullCardModal notes=notes/>

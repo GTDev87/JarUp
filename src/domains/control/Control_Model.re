@@ -18,6 +18,7 @@ type scene =
   | Home
   | Shake
   | Landing
+  | Faq
   | Add;
 
 type state = {scene, notes};
