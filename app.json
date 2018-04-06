@@ -3,7 +3,7 @@
     "sdkVersion": "25.0.0",
     "name": "Illume",
     "description": "Uppers for your mood.",
-    "version": "0.0.6",
+    "version": "0.0.7",
     "loading": {
       "hideExponentText": true,
     },
@@ -14,7 +14,7 @@
     },
     "android": {
       "package": "com.illume.illume",
-      "versionCode": 3,
+      "versionCode": 4,
       "icon": "./assets/icons/android_logo_big.png",
       "permissions": []
     }
