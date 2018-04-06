@@ -37,7 +37,7 @@ let selectRandomNote = (notes : Control_Model.notes) => Utils.selectRandomFromLi
 
 let iconChoices = [Control_Model.Heart, Control_Model.Smile, Control_Model.Happy];
 
-let characterLimit = 60;
+let characterLimit = 80;
 
 let chooseRandomIcon = () => Utils.selectRandomFromList(iconChoices, Heart);
 
