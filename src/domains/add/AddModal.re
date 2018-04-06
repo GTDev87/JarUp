@@ -14,7 +14,7 @@ let inputTextStyle = Style.(style([
   flex(1.),
 ]));
 
-let make = (~addNoteAndGoHome, ~updateNoteFn, ~controlAction, ~text, _children) => {
+let make = (~addNoteAndGoHome, ~updateNoteFn, ~text, _children) => {
   ...component,
   render: (_self) =>
     <KeyboardAvoidingView
@@ -27,24 +27,15 @@ let make = (~addNoteAndGoHome, ~updateNoteFn, ~controlAction, ~text, _children) 
         footerColor="black"
       >
         <Grid>
-          <Row size=5>
-            <TouchableOpacity
-              style=Style.(style([flex(1.)]))
-              onPress=((_event) => controlAction(Control.Action.(ChangeScene(Home))))
-            >
-              <Grid>
-                <Row size=2 />
-                <Row size=3 >
-                  <Text
-                    style=questionStyle
-                    value="What awesome thing happened to you today?"
-                    numberOfLines=3
-                    allowFontScaling=true
-                    adjustsFontSizeToFit=true
-                  />
-                </Row>
-              </Grid>
-            </TouchableOpacity>
+          <Row size=2 />
+          <Row size=3 >
+            <Text
+              style=questionStyle
+              value="What awesome thing happened to you today?"
+              numberOfLines=3
+              allowFontScaling=true
+              adjustsFontSizeToFit=true
+            />
           </Row>
           <Row size=3 >
             <TextInput
@@ -56,14 +47,11 @@ let make = (~addNoteAndGoHome, ~updateNoteFn, ~controlAction, ~text, _children) 
               blurOnSubmit=true
               placeholder="Insert moment here"
               value=text
+              autoFocus=true
+              returnKeyType=`done_
             />
           </Row>
-          <Row size=2>
-            <TouchableOpacity
-              style=Style.(style([flex(1.)]))
-              onPress=((_event) => controlAction(Control.Model.(ChangeScene(Home))))
-            />
-          </Row>
+          <Row size=2 />
         </Grid>
       </CardBorderLayout>
     </KeyboardAvoidingView>

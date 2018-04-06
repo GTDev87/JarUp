@@ -15,7 +15,6 @@ let pickScene = (scene, controlAction, updateNoteFn, addNoteAndGoHome, noteText,
   | Control.Model.Add =>
       <AddModal
         updateNoteFn=updateNoteFn
-        controlAction=controlAction
         addNoteAndGoHome=addNoteAndGoHome
         text=noteText
       />
