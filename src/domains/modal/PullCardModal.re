@@ -46,6 +46,7 @@ let make = (
       style=Style.(style([
         flex(1.),
         margin(Pt(0.)),
+        backgroundColor(String("transparent")),
         marginTop(Pt(Dimension.cardTop)),
       ]))
     >

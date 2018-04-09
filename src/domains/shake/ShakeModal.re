@@ -39,7 +39,11 @@ let make = (
   ...component,
   render: (_self) =>
     <TouchableWithoutFeedback
-      style=Style.(style([flex(1.),]))
+      style=Style.(
+        style([
+          flex(1.),
+          backgroundColor(String("transparent")),
+        ]))
       onPress=(() => controlAction(Control.Model.(ChangeScene(Home))))
       onLongPress=(() =>
         Alert.(alert(

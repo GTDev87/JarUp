@@ -7,7 +7,10 @@ let isShakeScene = (scene) => scene == Control.Model.Shake;
 let make = (~controlAction, ~scene, ~notes, ~noteText, ~selectedNote, ~icon, _children) => {
   ...component, 
   render: (_self) =>
-    <View style=Style.(style([flex(1.)]))>
+    <View style=Style.(style([
+      flex(1.),
+      backgroundColor(String("transparent")),
+    ]))>
       <PullCardModal
         controlAction=controlAction
         scene=scene

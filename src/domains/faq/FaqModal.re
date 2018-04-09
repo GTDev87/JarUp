@@ -14,6 +14,7 @@ let make = (~controlAction, _children) => {
     <TouchableOpacity
       style=Style.(style([
         flex(1.),
+        backgroundColor(String("transparent")),
       ]))
       onPress=(() => controlAction(Control.Action.(ChangeScene(Home))))
     >
